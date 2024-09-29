@@ -46,19 +46,53 @@ public :
 		{
 			if (contact[i].name == "")
 			{
-				std::cout << "Insert name" << std::endl;
-				std::getline(std::cin, contact[i].name);
-				std::cout << "Insert surname" << std::endl;
-				std::getline(std::cin, contact[i].surname);
-				std::cout << "Insert nickname" << std::endl;
-				std::getline(std::cin, contact[i].nickname);
-				std::cout << "Insert phone_number" << std::endl;
-				std::getline(std::cin, contact[i].phone_number);
-				std::cout << "Insert dark_secret" << std::endl;
-				std::getline(std::cin, contact[i].secret);
+				
+				while (contact[i].name == "")
+				{
+					std::cout << "Insert name" << std::endl;
+					std::getline(std::cin, contact[i].name);
+				}
+				while (contact[i].surname == "")
+				{
+					std::cout << "Insert surname" << std::endl;
+					std::getline(std::cin, contact[i].surname);
+				}
+				while (contact[i].nickname == "")
+				{
+					std::cout << "Insert nickname" << std::endl;
+					std::getline(std::cin, contact[i].nickname);
+				}
+				while (contact[i].phone_number == "")
+				{
+					std::cout << "Insert phone_number" << std::endl;
+					std::getline(std::cin, contact[i].phone_number);
+				}
+				while (contact[i].secret == "")
+				{
+					std::cout << "Insert dark_secret" << std::endl;
+					std::getline(std::cin, contact[i].secret);
+				}
+				std::cout << "Contact added" << std::endl;
 				break;
 			}
 			i++;
 		}
+		return ;
+	}
+	void search(int j)
+	{
+		i=0;
+
+		if (j < 1 || j > 8)
+		{
+			std::cout << "Insert a valid index" << std::endl;
+			return ;
+		}
+		while (i + 1 != j)
+			i++;
+		std::cout << contact[i].index << std::endl;
+		std::cout << contact[i].name << std::endl;
+		std::cout << contact[i].surname << std::endl;
+		std::cout << contact[i].nickname << std::endl;
 	}
 };
