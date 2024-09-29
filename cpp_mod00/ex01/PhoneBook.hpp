@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <iomanip>
 
 class Contact
 {
@@ -51,6 +52,10 @@ public :
 				std::getline(std::cin, contact[i].surname);
 				std::cout << "Insert nickname" << std::endl;
 				std::getline(std::cin, contact[i].nickname);
+				std::cout << "Insert phone_number" << std::endl;
+				std::getline(std::cin, contact[i].phone_number);
+				std::cout << "Insert dark_secret" << std::endl;
+				std::getline(std::cin, contact[i].secret);
 				break;
 			}
 			i++;
