@@ -1,11 +1,13 @@
 #include <iostream>
 #include <cctype>
 #include "PhoneBook.hpp"
+#include "Contact.hpp"
 
 int	main()
 {
 	int	ind;
 	std::string command;
+	std::string temp;
 	PhoneBook phonebook;
 
 	ind = 0;
@@ -23,18 +25,17 @@ int	main()
 			{
             	std::cout << "Invalid" << std::endl;
 				std::cin.clear();
-
 				std::cin.ignore();
-				
+				std::getline(std::cin, temp);
 				continue;
 			}
-			std::cout << ind;
+			std::getline(std::cin, temp);
 			phonebook.search(ind);
 		}
 		else if (command == "EXIT")
 			break;
 		else
-			continue;
+            std::cout << "Invalid command" << std::endl;
 	}
 	return(0);
 }
