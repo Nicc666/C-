@@ -20,7 +20,12 @@ void PhoneBook::add()
 	current_index++;
 	if (current_index > 8)
 	{
-		i = current_index % 8;
+		i = (current_index - 1) % 8;
+		contact[i].name = "";
+		contact[i].surname = "";
+		contact[i].nickname = "";
+		contact[i].phone_number = "";
+		contact[i].secret = "";
 		while (contact[i].name == "")
 			{
 				std::cout << "Insert name" << std::endl;
