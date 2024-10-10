@@ -3,41 +3,66 @@
 #include <iomanip>
 #include <ctime>
 
-// Inizializzazione delle variabili statiche
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
-// Costruttore
-Account::Account(int initial_deposit) 
-    : _accountIndex(_nbAccounts), _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0) {
+void printimestamp()
+{
+    std::time_t now = std::time(nullptr);
+    std::tm *parts = std::localtime(&now);
+    std::cout << "[" << std::put_time(parts, "%Y%m%d_%H%M%S") << "]"; 
+    return ;
+}
+
+int	Account::getNbAccounts(void)
+{
+	return (Account::_nbAccounts);
+}
+
+int	Account::getTotalAmount(void)
+{
+	return (Account::_totalAmount);
+}
+
+int	Account::getNbDeposits(void)
+{
+	return (Account::_totalNbDeposits);
+}
+
+int	Account::getNbWithdrawals(void)
+{
+	return (Account::_totalNbWithdrawals);
+}
+
+Account::Account(int initial_deposit)
+{
+    _accountIndex = getNbAccounts();
+    _amount = initial_deposit;
+    _nbWithdrawals = 0;
+    _nbDeposits = 0;
     _nbAccounts++;
-    _totalAmount += initial_deposit;
-    _displayTimestamp();
+    _totalAmount = _totalAmount + initial_deposit;
+    printimestamp();
     std::cout << " index:" << _accountIndex << ";amount:" << _amount << ";created" << std::endl;
 }
 
-// Distruttore
-Account::~Account() {
-    _displayTimestamp();
+Account::~Account()
+{
+    printimestamp();
     std::cout << " index:" << _accountIndex << ";amount:" << _amount << ";closed" << std::endl;
 }
 
-// Metodi statici
-int Account::getNbAccounts() { return _nbAccounts; }
-int Account::getTotalAmount() { return _totalAmount; }
-int Account::getNbDeposits() { return _totalNbDeposits; }
-int Account::getNbWithdrawals() { return _totalNbWithdrawals; }
-
-void Account::displayAccountsInfos() {
-    _displayTimestamp();
-    std::cout << " accounts:" << _nbAccounts
-              << ";total:" << _totalAmount
-              << ";deposits:" << _totalNbDeposits
-              << ";withdrawals:" << _totalNbWithdrawals << std::endl;
+void Account::displayAccountsInfos()
+{
+    printimestamp();
+    std::cout << " accounts:" << getNbAccounts() << ";total:" << getTotalAmount()
+    << ";deposits:" << getNbDeposits()
+    << ";withdrawals:" << getNbWithdrawals() << std::endl;
 }
 
+/*
 // Metodo di deposito
 void Account::makeDeposit(int deposit) {
     _displayTimestamp();
@@ -94,3 +119,4 @@ void Account::_displayTimestamp() {
               << std::setw(2) << std::setfill('0') << ptm->tm_min
               << std::setw(2) << std::setfill('0') << ptm->tm_sec << "]";
 }
+*/
