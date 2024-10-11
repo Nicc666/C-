@@ -8,9 +8,9 @@ int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
-static void	_displayTimestamp( void )
+void	Account::_displayTimestamp(void)
 {
-    std::time_t now = std::time(nullptr);
+    std::time_t now = std::time(NULL);
     std::tm *parts = std::localtime(&now);
     std::cout << "[" << std::put_time(parts, "%Y%m%d_%H%M%S") << "]"; 
     return ;
@@ -72,8 +72,8 @@ void Account::displayStatus() const
     _displayTimestamp();
     std::cout << " index:" << _accountIndex
     << ";amount:" << checkAmount()
-    << ";deposits:" << getNbDeposits()
-    << ";withdrawals:" << getNbWithdrawals() << std::endl;
+    << ";deposits:" << _nbDeposits
+    << ";withdrawals:" << _nbWithdrawals << std::endl;
 }
 
 void Account::makeDeposit(int deposit)
