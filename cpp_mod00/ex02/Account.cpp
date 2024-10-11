@@ -12,7 +12,9 @@ void	Account::_displayTimestamp(void)
 {
     std::time_t now = std::time(NULL);
     std::tm *parts = std::localtime(&now);
-    std::cout << "[" << std::put_time(parts, "%Y%m%d_%H%M%S") << "]"; 
+    char buffer[20];
+    std::strftime(buffer, sizeof(buffer), "%Y%m%d_%H%M%S", parts);
+    std::cout << "[" << buffer << "]"; 
     return ;
 }
 
