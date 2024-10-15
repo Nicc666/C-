@@ -13,6 +13,11 @@ PhoneBook::PhoneBook ()
 	}
 }
 
+PhoneBook::~PhoneBook()
+{
+	std::cout << "closing.." << std::endl;
+}
+
 void PhoneBook::add()
 {
 	i=0;

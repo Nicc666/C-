@@ -17,6 +17,9 @@ public :
 	Contact () : index(0), name(""), surname(""), nickname(""), phone_number(""), secret("")
 	{
 	}
+	~Contact()
+	{
+	}
 };
 
 #endif

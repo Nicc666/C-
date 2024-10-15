@@ -14,6 +14,7 @@ public :
 	int current_index;
 
 	PhoneBook ();
+	~PhoneBook ();
 
 	void add();
 	std::string truncate(std::string s);
