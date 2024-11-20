@@ -15,19 +15,26 @@
 
 #include <string>
 #include <iostream>
+#include <cmath>
 
 class Fixed
 {
 	public:
 		Fixed();
 		Fixed(const Fixed &other);
+		Fixed(const int x);
+		Fixed(const float x);
 		~Fixed();
 		Fixed	&operator=(const Fixed &other);
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
+		int toInt( void ) const;
+		float toFloat( void ) const;
 	private:
 		int value;
 		static const int bits = 8;
 };
 
 #endif
+
+std::ostream &operator<<(std::ostream& out, const Fixed &other);
