@@ -6,7 +6,7 @@
 /*   By: nspinell <nspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:40:59 by nspinell          #+#    #+#             */
-/*   Updated: 2024/10/19 15:41:01 by nspinell         ###   ########.fr       */
+/*   Updated: 2024/11/23 18:14:08 by nspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ public :
 	~PhoneBook ();
 
 	void add();
+	void	add_detail(int i);
 	std::string truncate(std::string s);
 	void search(int j);
 };

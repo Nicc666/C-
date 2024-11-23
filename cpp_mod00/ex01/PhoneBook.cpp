@@ -6,28 +6,67 @@
 /*   By: nspinell <nspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:40:48 by nspinell          #+#    #+#             */
-/*   Updated: 2024/10/19 15:40:50 by nspinell         ###   ########.fr       */
+/*   Updated: 2024/11/23 18:21:26 by nspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <cctype>
 #include "PhoneBook.hpp"
+#include "Contact.hpp"
 
-PhoneBook::PhoneBook ()
+PhoneBook::PhoneBook()
 {
 	i = 0;
 	current_index = 0;
 	while (i < 8)
 	{
-		contact[i].index = i + 1;
+		contact[i].setindex(i + 1);
 		i++;
 	}
 }
 
 PhoneBook::~PhoneBook()
 {
-	std::cout << "closing.." << std::endl;
+	std::cout << "distructor called" << std::endl;
+}
+
+void	PhoneBook::add_detail(int i)
+{
+	std::string temp;
+
+	while (contact[i].get_first_name() == "")
+	{
+		std::cout << "Insert name" << std::endl;
+		std::getline(std::cin, temp);
+		contact[i].set_first_name(temp);
+	}
+	while (contact[i].get_last_name() == "")
+	{
+		std::cout << "Insert last_name" << std::endl;
+		std::getline(std::cin, temp);
+		contact[i].set_last_name(temp);
+	}
+	while (contact[i].get_nickname() == "")
+	{
+		std::cout << "Insert nickname" << std::endl;
+		std::getline(std::cin, temp);
+		contact[i].set_nickname(temp);
+	}
+	while (contact[i].get_phone_number() == "")
+	{
+		std::cout << "Insert phone_number" << std::endl;
+		std::getline(std::cin, temp);
+		contact[i].set_phone_number(temp);
+	}
+	while (contact[i].get_darkest_secret() == "")
+	{
+		std::cout << "Insert dark_secret" << std::endl;
+		std::getline(std::cin, temp);
+		contact[i].set_darkest_secret(temp);
+	}
+	std::cout << "Contact added" << std::endl;
+	return;
 }
 
 void PhoneBook::add()
@@ -38,70 +77,20 @@ void PhoneBook::add()
 	if (current_index > 8)
 	{
 		i = (current_index - 1) % 8;
-		contact[i].name = "";
-		contact[i].surname = "";
-		contact[i].nickname = "";
-		contact[i].phone_number = "";
-		contact[i].secret = "";
-		while (contact[i].name == "")
-			{
-				std::cout << "Insert name" << std::endl;
-				std::getline(std::cin, contact[i].name);
-			}
-			while (contact[i].surname == "")
-			{
-				std::cout << "Insert surname" << std::endl;
-				std::getline(std::cin, contact[i].surname);
-			}
-			while (contact[i].nickname == "")
-			{
-				std::cout << "Insert nickname" << std::endl;
-				std::getline(std::cin, contact[i].nickname);
-			}
-			while (contact[i].phone_number == "")
-			{
-				std::cout << "Insert phone_number" << std::endl;
-				std::getline(std::cin, contact[i].phone_number);
-			}
-			while (contact[i].secret == "")
-			{
-				std::cout << "Insert dark_secret" << std::endl;
-				std::getline(std::cin, contact[i].secret);
-			}
-			std::cout << "Contact added" << std::endl;
+		contact[i].set_first_name("");
+		contact[i].set_last_name("");
+		contact[i].set_nickname("");
+		contact[i].set_phone_number("");
+		contact[i].set_darkest_secret("");
+		add_detail(i);
 	}
 	else
 	{
 		while (i < 8)
 		{
-			if (contact[i].name == "")
+			if (contact[i].get_first_name() == "")
 			{			
-				while (contact[i].name == "")
-				{
-					std::cout << "Insert name" << std::endl;
-					std::getline(std::cin, contact[i].name);
-				}
-				while (contact[i].surname == "")
-				{
-					std::cout << "Insert surname" << std::endl;
-					std::getline(std::cin, contact[i].surname);
-				}
-				while (contact[i].nickname == "")
-				{
-					std::cout << "Insert nickname" << std::endl;
-					std::getline(std::cin, contact[i].nickname);
-				}
-				while (contact[i].phone_number == "")
-				{
-					std::cout << "Insert phone_number" << std::endl;
-					std::getline(std::cin, contact[i].phone_number);
-				}
-				while (contact[i].secret == "")
-				{
-					std::cout << "Insert dark_secret" << std::endl;
-					std::getline(std::cin, contact[i].secret);
-				}
-				std::cout << "Contact added" << std::endl;
+				add_detail(i);
 				break;
 			}
 			i++;
@@ -137,9 +126,9 @@ void PhoneBook::search(int j)
      << std::setw(10) << "First Name" << "|"\
     << std::setw(10) << "Last Name" << "|"\
     << std::setw(10) << "Nickname" << "|" << std::endl;
-	std::cout << std::setw(10) << contact[i].index << "|"\
-	<< std::setw(10) << truncate(contact[i].name) << "|"\
-	<< std::setw(10) << truncate(contact[i].surname) << "|"\
-	<< std::setw(10) << truncate(contact[i].nickname) << "|" << std::endl;
+	std::cout << std::setw(10) << contact[i].getindex() << "|"\
+	<< std::setw(10) << truncate(contact[i].get_first_name()) << "|"\
+	<< std::setw(10) << truncate(contact[i].get_last_name()) << "|"\
+	<< std::setw(10) << truncate(contact[i].get_first_name()) << "|" << std::endl;
 	return ;
 }

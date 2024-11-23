@@ -6,7 +6,7 @@
 /*   By: nspinell <nspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:40:11 by nspinell          #+#    #+#             */
-/*   Updated: 2024/10/19 15:40:14 by nspinell         ###   ########.fr       */
+/*   Updated: 2024/11/23 17:23:18 by nspinell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,3 @@ int	main(int argc, char **argv)
 	std::cout << '\n';
 	return(0);
 }
-
-/*
-class Word
-{
-private :
-	char *s;
-
-public :
-	Word(char *w) : s(w) {}
-	void upper()
-	{
-		int i = 0;
-		while (s[i] != '\0')
-		{
-			s[i] = std :: toupper(s[i]);
-			i++;
-		}
-	}
-};
-*/
