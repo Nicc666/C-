@@ -20,7 +20,7 @@
 class Contact
 {
 private :
-	int index;
+	int 		index;
 	std::string name;
 	std::string last_name;
 	std::string nickname;
@@ -33,18 +33,18 @@ public :
 	~Contact()
 	{
 	}
-	int	getindex(void);
+	int			getindex(void);
 	std::string	get_first_name(void);
 	std::string	get_last_name(void);
 	std::string	get_nickname(void);
 	std::string	get_phone_number(void);
 	std::string	get_darkest_secret(void);
-	void	setindex(int i);
-	void	set_first_name(std::string s);
-	void	set_last_name(std::string s);
-	void	set_nickname(std::string s);
-	void	set_phone_number(std::string s);
-	void	set_darkest_secret(std::string s);
+	void		setindex(int i);
+	void		set_first_name(std::string s);
+	void		set_last_name(std::string s);
+	void		set_nickname(std::string s);
+	void		set_phone_number(std::string s);
+	void		set_darkest_secret(std::string s);
 };
 
 #endif

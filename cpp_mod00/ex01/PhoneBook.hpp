@@ -22,15 +22,15 @@ class PhoneBook
 {
 private :
 	Contact contact[8];
-	int i;
-	int current_index;
+	int 	i;
+	int 	current_index;
 public :
 	PhoneBook ();
 	~PhoneBook ();
-	void add();
-	void	add_detail(int i);
+	void 		add();
+	void		add_detail(int i);
 	std::string truncate(std::string s);
-	void search(int j);
+	void 		search(int j);
 };
 
 #endif
