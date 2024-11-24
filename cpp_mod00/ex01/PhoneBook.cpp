@@ -65,7 +65,7 @@ void	PhoneBook::add_detail(int i)
 		std::getline(std::cin, temp);
 		contact[i].set_darkest_secret(temp);
 	}
-	std::cout << "Contact added" << std::endl;
+	std::cout << "\033[32m" << "Contact added" << "\033[0m" << std::endl;
 	return;
 }
 
@@ -117,7 +117,7 @@ void PhoneBook::search(int j)
 
 	if (j < 1 || j > 8)
 	{
-		std::cout << "Insert a valid index" << std::endl;
+		std::cout << "\033[31m" << "Insert a valid index" << "\033[0m" << std::endl;
 		return ;
 	}
 	while (i + 1 != j)

@@ -31,11 +31,11 @@ int	main()
 			phonebook.add();
 		else if (command == "SEARCH")
 		{
-			std::cout << "Insert index to search (range 1 - 8)" << std::endl;
+			std::cout << "\033[33m" << "Insert index to search (range 1 - 8)" << "\033[0m" << std::endl;
 			std::cin >> ind;
 			if (std::cin.fail())
 			{
-            	std::cout << "Invalid" << std::endl;
+            	std::cout << "\033[31m" << "Invalid" << "\033[0m" << std::endl;
 				std::cin.clear();
 				std::cin.ignore();
 				std::getline(std::cin, temp);
@@ -47,7 +47,7 @@ int	main()
 		else if (command == "EXIT")
 			break;
 		else
-            std::cout << "Invalid command" << std::endl;
+            std::cout << "\033[31m" << "Invalid command" << "\033[0m" << std::endl;
 	}
 	return(0);
 }
