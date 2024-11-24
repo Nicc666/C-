@@ -25,7 +25,7 @@ int	main()
 	ind = 0;
 	while (1)
 	{
-		std::cout << "Insert command: ADD, SEARCH, EXIT" << std::endl;
+		std::cout << "\033[32m" << "Insert command: ADD, SEARCH, EXIT" << "\033[0m" << std::endl;
 		std::getline(std::cin, command);
 		if (command == "ADD")
 			phonebook.add();
