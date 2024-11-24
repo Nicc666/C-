@@ -66,6 +66,70 @@ bool Fixed::operator<(const Fixed &other)
         return(false);
 }
 
+bool Fixed::operator>=(const Fixed &other)
+{
+    if (this->value >= other.getRawBits())
+        return(true);
+    else
+        return(false);
+}
+
+bool Fixed::operator<=(const Fixed &other)
+{
+    if (this->value <= other.getRawBits())
+        return(true);
+    else
+        return(false);
+}
+
+bool Fixed::operator==(const Fixed &other)
+{
+    if (this->value == other.getRawBits())
+        return(true);
+    else
+        return(false);
+}
+
+bool Fixed::operator!=(const Fixed &other)
+{
+    if (this->value != other.getRawBits())
+        return(true);
+    else
+        return(false);
+}
+
+Fixed Fixed::operator+(const Fixed &other)
+{
+    Fixed r;
+
+    r.setRawBits(this->value + other.getRawBits());
+    return(r);
+}
+
+Fixed Fixed::operator-(const Fixed &other)
+{
+    Fixed r;
+
+    r.setRawBits(this->value - other.getRawBits());
+    return(r);
+}
+
+Fixed Fixed::operator*(const Fixed &other)
+{
+    Fixed r;
+
+    r.setRawBits((this->toFloat() * other.toFloat()) * 256);
+    return(r);
+}
+
+Fixed Fixed::operator/(const Fixed &other)
+{
+    Fixed r;
+
+    r.setRawBits((this->toFloat() / other.toFloat()) * 256);
+    return(r);
+}
+
 std::ostream &operator<<(std::ostream &out, const Fixed &other)
 {
     out << other.toFloat();
