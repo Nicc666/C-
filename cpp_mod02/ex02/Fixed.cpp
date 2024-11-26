@@ -14,35 +14,35 @@
 
 Fixed::Fixed()
 {
-    std::cout << "Default constructor called" << std::endl;
 	this->value = 0;
 	return;
 }
 
 Fixed::Fixed(const Fixed &other)
 {
-    std::cout << "Copy constructor called" << std::endl;
     *this = other;
     return;
 }
 
 Fixed::Fixed(const int x)
 {
-    std::cout << "Int constructor called" << std::endl;
     this->value = (x << 8);
     return;
 }
 
 Fixed::Fixed(const float x)
 {
-    std::cout << "Float constructor called" << std::endl;
     this->value = (int)(roundf(x * 256));
+    return;
+}
+
+Fixed::~Fixed()
+{
     return;
 }
 
 Fixed &Fixed::operator=(const Fixed &other)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
     if (this != &other)
     {
         this->value = other.getRawBits();
@@ -138,6 +138,7 @@ Fixed &Fixed::operator++(void)
 
 Fixed Fixed::operator++(int x)
 {
+    (void)x;
     Fixed t = *this;
 
     this->setRawBits(this->value + 1);
@@ -152,22 +153,49 @@ Fixed &Fixed::operator--(void)
 
 Fixed Fixed::operator--(int x)
 {
+    (void)x;
     Fixed t = *this;
 
     this->setRawBits(this->value - 1);
     return(t);
 }
 
+Fixed &Fixed::min(Fixed &a, Fixed &b)
+{
+    if (a.getRawBits() < b.getRawBits())
+        return(a);
+    else
+        return(b);
+}
+
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
+{
+    if (a.getRawBits() < b.getRawBits())
+        return(a);
+    else
+        return(b);
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+    if (a.getRawBits() > b.getRawBits())
+        return(a);
+    else
+        return(b);
+}
+
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
+{
+    if (a.getRawBits() > b.getRawBits())
+        return(a);
+    else
+        return(b);
+}
+
 std::ostream &operator<<(std::ostream &out, const Fixed &other)
 {
     out << other.toFloat();
     return (out);
-}
-
-Fixed::~Fixed()
-{
-    std::cout << "Destructor called" << std::endl;
-    return;
 }
 
 int Fixed::getRawBits( void ) const
