@@ -129,6 +129,6 @@ void PhoneBook::search(int j)
 	std::cout << std::setw(10) << contact[i].getindex() << "|"\
 	<< std::setw(10) << truncate(contact[i].get_first_name()) << "|"\
 	<< std::setw(10) << truncate(contact[i].get_last_name()) << "|"\
-	<< std::setw(10) << truncate(contact[i].get_first_name()) << "|" << std::endl;
+	<< std::setw(10) << truncate(contact[i].get_nickname()) << "|" << std::endl;
 	return ;
 }
