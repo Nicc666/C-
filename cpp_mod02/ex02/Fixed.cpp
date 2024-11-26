@@ -130,6 +130,34 @@ Fixed Fixed::operator/(const Fixed &other)
     return(r);
 }
 
+Fixed &Fixed::operator++(void)
+{
+    this->setRawBits(this->value + 1);
+    return(*this);
+}
+
+Fixed Fixed::operator++(int x)
+{
+    Fixed t = *this;
+
+    this->setRawBits(this->value + 1);
+    return(t);
+}
+
+Fixed &Fixed::operator--(void)
+{
+    this->setRawBits(this->value - 1);
+    return(*this);
+}
+
+Fixed Fixed::operator--(int x)
+{
+    Fixed t = *this;
+
+    this->setRawBits(this->value - 1);
+    return(t);
+}
+
 std::ostream &operator<<(std::ostream &out, const Fixed &other)
 {
     out << other.toFloat();
