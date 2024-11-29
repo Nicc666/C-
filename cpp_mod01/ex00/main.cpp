@@ -15,7 +15,9 @@
 int	main(void)
 {
 	Zombie *zzz;
+	Zombie bubu("BUBU");
 
+	bubu.announce();
 	zzz = newZombie("Panda");
 	zzz->announce();
 	randomChump("KKK");

@@ -22,14 +22,14 @@ HumanB::~HumanB()
 
 void HumanB::attack()
 {
-    if (weapon == NULL)
+    if (this->weapon == NULL)
         return ;
-    std::cout << name << " attacks with their " << weapon->getType() << std::endl;
+    std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
     return ;
 }
 
 void HumanB::setWeapon(Weapon &wea)
 {
-    weapon = &wea;
+    this->weapon = &wea;
     return ;
 }
