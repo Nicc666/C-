@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 	size_t pos;
 	size_t newpos;
 	size_t found;
-	std::string filenew = std::string(argv[1]) + "new";
+	std::string filenew = std::string(argv[1]) + ".repalce";
 	std::ofstream outfile(filenew.c_str());
 	if (file.is_open() == false)
 	{
