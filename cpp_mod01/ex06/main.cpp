@@ -14,14 +14,14 @@
 
 int main(int argc, char **argv)
 {
-    Harl harl;
+	Harl harl;
 
-    if (argc != 2)
-    {
-        std::cout << "parameter error" << std::endl;
-        return(1);
-    }
-    std::string mess(argv[1]);
-    harl.complain(mess);
-    return(0);
+	if (argc != 2)
+	{
+		std::cout << "parameter error" << std::endl;
+		return(1);
+	}
+	std::string mess(argv[1]);
+	harl.complain(mess);
+	return(0);
 }
