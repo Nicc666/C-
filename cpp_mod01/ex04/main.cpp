@@ -14,27 +14,13 @@
 #include <iostream>
 #include <fstream>
 
-int main(int argc, char **argv)
+void	replace(std::string s1, std::string s2, std::ifstream &file, std::ofstream &outfile)
 {
-	if (argc != 4)
-	{
-		std::cout << "Parameter input error" << std::endl;
-		return 1;
-	}
-	std::string s1 = argv[2];
-	std::string s2 = argv[3];
+	size_t pos = 0;
+	size_t newpos = 0;
+	size_t found = 0;
 	std::string line;
-	std::ifstream file(argv[1]);
-	size_t pos;
-	size_t newpos;
-	size_t found;
-	std::string filenew = std::string(argv[1]) + ".repalce";
-	std::ofstream outfile(filenew.c_str());
-	if (file.is_open() == false)
-	{
-		std::cout << "Opening file error" << std::endl;
-		return 1;
-	}
+
 	while (std::getline(file, line))
 	{
 		pos = 0;
@@ -54,7 +40,36 @@ int main(int argc, char **argv)
 		if (file.eof() != true)
 			outfile << std::endl;
 	}
-	file.close();
-	outfile.close();
+	return ;
+}
+
+int main(int argc, char **argv)
+{
+	if (argc != 4)
+	{
+		std::cout << "Parameter input error" << std::endl;
+		return 1;
+	}
+	std::ifstream file(argv[1]);
+	if (file.is_open() == false)
+	{
+		std::cout << "Error: Opening file" << std::endl;
+		return 1;
+	}
+	std::string s1 = argv[2];
+	if (s1.empty())
+	{
+        std::cout << "Error: Empty string" << std::endl;
+        return 1;
+    }
+	std::string s2 = argv[3];
+	std::string filenew = std::string(argv[1]) + ".replace";
+	std::ofstream outfile(filenew.c_str());
+	if (outfile.is_open() == false)
+	{
+		std::cout << "Error: Cannot create output file" << std::endl;
+		return 1;
+	}
+	replace(s1, s2, file, outfile);
 	return 0;
 }
