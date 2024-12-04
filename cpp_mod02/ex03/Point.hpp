@@ -23,9 +23,13 @@ class Point
 		Point(Point const &other);
 		Point &operator=(const Point &other);
 		~Point();
+		Fixed getX() const;
+		Fixed getY() const;
 	private:
 		Fixed const x;
 		Fixed const y;
 };
 
 #endif
+
+bool bsp( Point const a, Point const b, Point const c, Point const p);

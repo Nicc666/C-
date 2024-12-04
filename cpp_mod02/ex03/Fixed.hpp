@@ -57,4 +57,3 @@ class Fixed
 #endif
 
 std::ostream &operator<<(std::ostream& out, const Fixed &other);
-bool bsp( Point const a, Point const b, Point const c, Point const point);

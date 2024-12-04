@@ -11,13 +11,19 @@
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+#include "Point.hpp"
 
 int main( void )
-{
-    Fixed a(1.1f);
-    Fixed b(5.5f);
-    Fixed c(2.2f);
+{    
+    Point a(Fixed (1.0f), Fixed (1.0f));
+    Point b(Fixed (4.0f), Fixed (1.0f));
+    Point c(Fixed (3.0f), Fixed (2.0f));
+    Point p1(Fixed (1.0f), Fixed (1.0f));
+    Point p2(Fixed (1.5f), Fixed (1.1f));
+    Point p3(Fixed (2.5f), Fixed (1.0f));
 
-    std::cout << bsp(a,b,c,3.3) << std::endl;
+    std::cout << "result: " << bsp(a,b,c,p1) << std::endl;
+    std::cout << "result: " << bsp(a,b,c,p2) << std::endl;
+    std::cout << "result: " << bsp(a,b,c,p3) << std::endl;
     return 0;
 }
