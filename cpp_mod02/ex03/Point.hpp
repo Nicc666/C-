@@ -21,13 +21,13 @@ class Point
 		Point();
 		Point(Fixed const a, Fixed const b);
 		Point(Point const &other);
-		Point &operator=(const Point &other);
 		~Point();
-		Fixed getX() const;
-		Fixed getY() const;
+		Point	&operator=(const Point &other);
+		Fixed	getX() const;
+		Fixed	getY() const;
 	private:
-		Fixed const x;
-		Fixed const y;
+		Fixed const	x;
+		Fixed const	y;
 };
 
 #endif

@@ -26,13 +26,13 @@ class Fixed
 		Fixed(const float x);
 		~Fixed();
 		Fixed	&operator=(const Fixed &other);
-		int getRawBits( void ) const;
-		void setRawBits( int const raw );
-		int toInt( void ) const;
-		float toFloat( void ) const;
+		int 	getRawBits( void ) const;
+		void 	setRawBits( int const raw );
+		int 	toInt( void ) const;
+		float 	toFloat( void ) const;
 	private:
-		int value;
-		static const int bits = 8;
+		int				 	value;
+		static const int	bits = 8;
 };
 
 #endif
