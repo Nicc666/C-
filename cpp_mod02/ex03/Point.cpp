@@ -22,26 +22,26 @@ Point::Point(Fixed const a, Fixed const b) : x(a), y(b)
 
 Point::Point(Point const &a) : x(a.getX()), y(a.getY())
 {
-    return;
+	return;
 }
 
 Point &Point::operator=(const Point &other)
 {
-    (void)other;
-    return (*this);
+	(void)other;
+	return (*this);
 }
 
 Point::~Point()
 {
-    return;
+	return;
 }
 
 Fixed Point::getX() const
 {
-    return(x);
+	return(x);
 }
 
 Fixed Point::getY() const
 {
-    return(y);
+	return(y);
 }

@@ -14,73 +14,73 @@
 
 Fixed::Fixed()
 {
-    std::cout << "Default constructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 	this->value = 0;
 	return;
 }
 
 Fixed::Fixed(const Fixed &other)
 {
-    std::cout << "Copy constructor called" << std::endl;
-    *this = other;
-    return;
+	std::cout << "Copy constructor called" << std::endl;
+	*this = other;
+	return;
 }
 
 Fixed::Fixed(const int x)
 {
-    std::cout << "Int constructor called" << std::endl;
-    this->value = (x << 8);
-    return;
+	std::cout << "Int constructor called" << std::endl;
+	this->value = (x << 8);
+	return;
 }
 
 Fixed::Fixed(const float x)
 {
-    std::cout << "Float constructor called" << std::endl;
-    this->value = (int)(roundf(x * 256));
-    return;
+	std::cout << "Float constructor called" << std::endl;
+	this->value = (int)(roundf(x * 256));
+	return;
 }
 
 Fixed &Fixed::operator=(const Fixed &other)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
-    if (this != &other)
-    {
-        this->value = other.getRawBits();
-    }
-    return (*this);
+	std::cout << "Copy assignment operator called" << std::endl;
+	if (this != &other)
+	{
+		this->value = other.getRawBits();
+	}
+	return (*this);
 }
 
 std::ostream &operator<<(std::ostream &out, const Fixed &other)
 {
-    out << other.toFloat();
-    return (out);
+	out << other.toFloat();
+	return (out);
 }
 
 Fixed::~Fixed()
 {
-    std::cout << "Destructor called" << std::endl;
-    return;
+	std::cout << "Destructor called" << std::endl;
+	return;
 }
 
 int Fixed::getRawBits( void ) const
 {
-    return (this->value);
+	return (this->value);
 }
 
 void Fixed::setRawBits( int const raw )
 {
-    this->value = raw;
-    return;
+	this->value = raw;
+	return;
 }
 
 int Fixed::toInt( void ) const
 {
-    int r = this->value >> 8;
-    return (r);
+	int r = this->value >> 8;
+	return (r);
 }
 
 float Fixed::toFloat( void ) const
 {
-    float b = this->value / 256.0;
-    return (b);
+	float b = this->value / 256.0;
+	return (b);
 }
