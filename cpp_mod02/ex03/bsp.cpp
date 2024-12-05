@@ -13,21 +13,27 @@
 #include "Fixed.hpp"
 #include "Point.hpp"
 
-static double area( Point const a, Point const b, Point const c)
+static Fixed absolute(Fixed x)
 {
-	double A;
-	double f;
+	if (x < 0)
+		return (x * (-1));
+	else
+		return (x);
+}
+
+static Fixed area( Point const a, Point const b, Point const c)
+{
+	Fixed A;
 
 	Fixed x((b.getX() - a.getX())*(c.getY() - a.getY()) - (c.getX() - a.getX())*(b.getY() - a.getY()));
-	f = static_cast<double>(x.toFloat());
-	A = ((0.5) * fabs(f));
+	A = (Fixed(0.5f) * absolute(x));
 	return (A);
 }
 
 bool bsp( Point const a, Point const b, Point const c, Point const p)
 {
-	double A, A1, A2, A3;
-	double e = 0.01;
+	Fixed A, A1, A2, A3;
+	Fixed eps(0.01f);
 
 	A = area(a, b, c);
 	A1 = area(a, b, p);
@@ -35,9 +41,7 @@ bool bsp( Point const a, Point const b, Point const c, Point const p)
 	A3 = area(p, b ,c);
 	if (A1 == 0 || A2 == 0 || A3 == 0)
 		return (false);
-	//std::cout << "A: " << A << std::endl << "A1: " << A1 << std::endl << "A2: " << A2 << std::endl << "A3: " << A3 << std::endl;
-	//std::cout << "A1 + A2 + A3: " << A1 + A2 + A3 << std::endl;
-	if (A - (A1 + A2 + A3) < e)
+	if (absolute(A - (A1 + A2 + A3)) < eps)
 		return (true);
 	else
 		return (false);

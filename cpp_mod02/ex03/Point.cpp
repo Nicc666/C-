@@ -16,7 +16,7 @@ Point::Point() : x(0), y(0)
 {
 }
 
-Point::Point(Fixed const a, Fixed const b) : x(a), y(b)
+Point::Point(float const a, float const b) : x(Fixed(a)), y(Fixed(b))
 {
 }
 

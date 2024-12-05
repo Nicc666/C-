@@ -19,7 +19,7 @@ class Point
 {
 	public:
 		Point();
-		Point(Fixed const a, Fixed const b);
+		Point(float const a, float const b);
 		Point(Point const &other);
 		~Point();
 		Point	&operator=(const Point &other);
