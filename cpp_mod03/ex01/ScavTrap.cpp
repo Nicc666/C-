@@ -41,18 +41,18 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &other)
 
 void ScavTrap::attack(const std::string &target)
 {
-    if (ClapTrap::getHitPoints() == 0 || ClapTrap::getEnergy() == 0)
+    if (this->hit_points == 0 || this->energy == 0)
     {
-        std::cout << "ScavTrap " << ClapTrap::getName() << " impossible to attack, not enough points" << std::endl;
+        std::cout << "ScavTrap " << this->name << " impossible to attack, not enough points" << std::endl;
         return ;
     }
-    ClapTrap::setEnergy(ClapTrap::getEnergy() - 1);
-    std::cout << "ScavTrap " << ClapTrap::getName() << " attacks " << target \
-    << " causing " << ClapTrap::getAttackDamage() << " points of damage!" << std::endl;
+    this->energy -= 1;
+    std::cout << "ScavTrap " << this->name << " attacks " << target \
+    << " causing " << this->attack_damage << " points of damage!" << std::endl;
     return ;
 }
 
 void ScavTrap::guardGate()
 {
-    std::cout << "ScavTrap " << ClapTrap::getName() << " is now in Gatekeeper mode!" << std::endl;
+    std::cout << "ScavTrap " << this->name << " is now in Gatekeeper mode!" << std::endl;
 }

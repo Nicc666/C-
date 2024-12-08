@@ -14,9 +14,11 @@
 
 int main()
 {
+    ScavTrap *scav2 = new ScavTrap("nuovo");
+    ScavTrap scav("scavino");
     ClapTrap clap1("Ciccio");
-    ClapTrap clap2("Pasticco");
-    ClapTrap copyclap(clap1);
+    ClapTrap clap2("Pasticcio");
+    
 
     clap1.attack("Pasticcio");
     clap2.takeDamage(5);
@@ -25,6 +27,12 @@ int main()
     clap2.attack("Ciccio");
     clap1.beRepaired(5);
     clap2.beRepaired(5);
-    copyclap.attack("Pasticcio");
+
+    scav.guardGate();
+    scav.attack("Ciccio");
+    scav.takeDamage(5);
+    scav.beRepaired(5);
+    scav2->attack("Ciccio");
+    delete scav2;
     return (0);
 }
