@@ -15,25 +15,25 @@
 
 int main()
 {
-    ScavTrap *scav2 = new ScavTrap("nuovo");
-    ScavTrap scav("scavino");
-    ClapTrap clap1("Ciccio");
-    FragTrap ff;
-    FragTrap frag("Frag");
-    
-    clap1.attack("Pasticcio");
-    clap1.attack("Pasticcio");
-    clap1.beRepaired(5);
+	ScavTrap *scav2 = new ScavTrap("nuovo");
+	ScavTrap scav("scavino");
+	ClapTrap clap1("Ciccio");
+	FragTrap ff;
+	FragTrap frag("Frag");
+	
+	clap1.attack("Pasticcio");
+	clap1.attack("Pasticcio");
+	clap1.beRepaired(5);
 
-    scav.guardGate();
-    scav.attack("Ciccio");
-    scav2->attack("Ciccio");
+	scav.guardGate();
+	scav.attack("Ciccio");
+	scav2->attack("Ciccio");
 
-    frag.attack("Ciccio");
-    frag.highFivesGuys();
-    std::cout << frag.getAttackDamage() << std::endl;
-    std::cout << frag.getEnergy() << std::endl;;
-    std::cout << frag.getHitPoints() << std::endl;;
-    delete scav2;
-    return (0);
+	frag.attack("Ciccio");
+	frag.highFivesGuys();
+	std::cout << frag.getAttackDamage() << std::endl;
+	std::cout << frag.getEnergy() << std::endl;;
+	std::cout << frag.getHitPoints() << std::endl;;
+	delete scav2;
+	return (0);
 }
