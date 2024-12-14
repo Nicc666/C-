@@ -25,7 +25,7 @@ Brain::Brain(const Brain &other)
 Brain &Brain::operator=(const Brain &other)
 {
     int i;
-    for (i = 0; i < 100; i++);
+    for (i = 0; i < 100; i++)
         this->ideas[i] = other.ideas[i];
     return(*this);
 }
@@ -33,4 +33,15 @@ Brain &Brain::operator=(const Brain &other)
 Brain::~Brain()
 {
     std::cout << "Brain distructor" << std::endl;
+}
+
+void Brain::set_idea(int i, std::string s)
+{
+    this->ideas[i] = s;
+    return;
+}
+
+std::string Brain::get_idea(int i) const
+{
+    return(this->ideas[i]);
 }

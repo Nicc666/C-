@@ -15,20 +15,38 @@
 
 int main()
 {
-	Animal a;
-	Dog d;
-	Dog copy(d);
-	Cat c;
-	Cat cop(c);
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	delete j;//should not create a leak
+	delete i;
 
-	a.makeSound();
-	std::cout << "Animal type: " <<a.getType() << std::endl;
-	d.makeSound();
-	std::cout << "Dog type: " <<d.getType() << std::endl;
-	copy.makeSound();
-	std::cout << "Dog copy type: " <<copy.getType() << std::endl;
-	c.makeSound();
-	std::cout << "Cat type: " <<c.getType() << std::endl;
-	cop.makeSound();
+	int z = 0;
+	Animal *array[10];
+	for (z = 0; z < 5; z++)
+		array[z] = new Dog();
+	for (z = 5; z < 10; z++)
+		array[z] = new Cat();
+	Cat *cat = new Cat();
+	Dog *dog = new Dog();
+	std::cout << "cat: " << cat->getType() << std::endl;
+	std::cout << "dog: " << dog->getType() << std::endl;
+	cat->makeSound();
+	dog->makeSound();
+	std::cout << "array sound" << std::endl;
+	for (z = 0; z < 10; z++)
+		array[z]->makeSound();
+	std::cout << "----------------------" << std::endl;
+
+
+	for (z = 0; z < 100; z++)
+		cat->set_idea(z, "idea");
+	for (z = 0; z < 100; z++)
+		std::cout << cat->get_idea(z) << std::endl;
+
+	std::cout << "----------------------" << std::endl;
+	delete cat;
+	delete dog;
+	for (z = 0; z < 10; z++)
+		delete array[z];
 	return (0);
 }
