@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nspinell <nspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,42 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Brain.hpp"
 
-Animal::Animal() : type("Animal")
+Brain::Brain()
 {
-    std::cout << "(Animal) Default constructor called" << std::endl;
+    std::cout << "Brain constructor" << std::endl;
 }
 
-Animal::Animal(const std::string &type) : type(type)
+Brain::Brain(const Brain &other)
 {
-    std::cout << "(Animal) Type constructor called" << std::endl;
-}
-
-Animal::Animal(const Animal &other)
-{
-    std::cout << "(Animal) Copy constructor called" << std::endl;
     *this = other;
 }
 
-Animal &Animal::operator=(const Animal &other)
+Brain &Brain::operator=(const Brain &other)
 {
-    std::cout << "(Animal) Copy operator" << std::endl;
-    this->type = other.type;
+    int i;
+    for (i = 0; i < 100; i++);
+        this->ideas[i] = other.ideas[i];
     return(*this);
 }
 
-Animal::~Animal()
+Brain::~Brain()
 {
-    std::cout << "(Animal) Default distructor called" << std::endl;
-}
-
-std::string Animal::getType(void) const
-{
-    return(this->type);
-}
-
-void Animal::makeSound(void) const
-{
-    std::cout << "No sound" << std::endl;
+    std::cout << "Brain distructor" << std::endl;
 }

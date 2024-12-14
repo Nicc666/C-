@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nspinell <nspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,42 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Cat.hpp"
 
-Animal::Animal() : type("Animal")
+Cat::Cat() : Animal("Cat")
 {
-    std::cout << "(Animal) Default constructor called" << std::endl;
+    std::cout << "(Cat) Default constructor called" << std::endl;
+    brain = new Brain();
 }
 
-Animal::Animal(const std::string &type) : type(type)
+Cat::Cat(const Cat &other) : Animal("Cat")
 {
-    std::cout << "(Animal) Type constructor called" << std::endl;
-}
-
-Animal::Animal(const Animal &other)
-{
-    std::cout << "(Animal) Copy constructor called" << std::endl;
+    std::cout << "(Cat) Copy constructor called" << std::endl;
     *this = other;
 }
 
-Animal &Animal::operator=(const Animal &other)
+Cat &Cat::operator=(const Cat &other)
 {
-    std::cout << "(Animal) Copy operator" << std::endl;
+    std::cout << "(Cat) Copy operator" << std::endl;
     this->type = other.type;
+    this->brain = other.brain;
     return(*this);
 }
 
-Animal::~Animal()
+Cat::~Cat()
 {
-    std::cout << "(Animal) Default distructor called" << std::endl;
+    std::cout << "(Cat) Default distructor called" << std::endl;
+    delete brain;
 }
 
-std::string Animal::getType(void) const
+void Cat::makeSound(void) const
 {
-    return(this->type);
-}
-
-void Animal::makeSound(void) const
-{
-    std::cout << "No sound" << std::endl;
+    std::cout << "Miao miao" << std::endl;
 }
