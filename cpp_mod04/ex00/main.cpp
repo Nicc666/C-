@@ -18,22 +18,26 @@
 int main()
 {
 	Animal a;
-	Dog d;
-	Dog copy(d);
-	Cat c;
-	Cat cop(c);
-
 	a.makeSound();
 	std::cout << "Animal type: " <<a.getType() << std::endl;
+	std::cout << "----------------------" << std::endl;
+	Dog d;
 	d.makeSound();
 	std::cout << "Dog type: " <<d.getType() << std::endl;
+	std::cout << "----------------------" << std::endl;
+	Dog copy(d);
 	copy.makeSound();
 	std::cout << "Dog copy type: " <<copy.getType() << std::endl;
+	std::cout << "----------------------" << std::endl;
+	Cat c;
 	c.makeSound();
 	std::cout << "Cat type: " <<c.getType() << std::endl;
+	std::cout << "----------------------" << std::endl;
+	Cat cop(c);
 	cop.makeSound();
 	std::cout << "Cat copy type: " <<cop.getType() << std::endl;
 	std::cout << "----------------------" << std::endl;
+
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
@@ -46,6 +50,7 @@ int main()
 	delete j;
 	delete i;
 	std::cout << "----------------------" << std::endl;
+
 	const WrongAnimal* wrong = new WrongAnimal();
 	const WrongAnimal* iii = new WrongCat();
 	const WrongCat *wc = new WrongCat();

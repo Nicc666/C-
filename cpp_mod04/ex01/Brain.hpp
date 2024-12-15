@@ -25,7 +25,7 @@ class Brain
 		~Brain();
 		void set_idea(int i, std::string s);
 		std::string get_idea(int i) const;
-	protected:
+	private:
 		std::string ideas[100];
 };
 

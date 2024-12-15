@@ -28,7 +28,7 @@ Dog::Dog(const Dog &other) : Animal(other)
 Dog &Dog::operator=(const Dog &other)
 {
     std::cout << "(Dog) Copy operator" << std::endl;
-    this->type = "Dog";
+    this->type = other.type;
     brain = new Brain(*other.brain);
     return(*this);
 }
@@ -42,4 +42,15 @@ Dog::~Dog()
 void Dog::makeSound(void) const
 {
     std::cout << "Wof wof" << std::endl;
+}
+
+void Dog::set_idea(int i, std::string s)
+{
+    this->brain->set_idea(i, s);
+    return;
+}
+
+std::string Dog::get_idea(int i) const
+{
+    return(brain->get_idea(i));
 }
