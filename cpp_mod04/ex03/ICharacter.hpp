@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*    ICharacter.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nspinell <nspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,34 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
+#ifndef ICHARACTER_HPP
+#define ICHARACTER_HPP
 
-Ice::Ice() : AMateria("ice")
-{
-}
+#include "AMateria.hpp"
 
-Ice::Ice(Ice const &other) : AMateria(other)
+class ICharacter
 {
-    *this = other;
-}
+	public:
+		virtual ~ICharacter() {}
+		virtual std::string const & getName() const = 0;
+		virtual void equip(AMateria* m) = 0;
+		virtual void unequip(int idx) = 0;
+		virtual void use(int idx, ICharacter& target) = 0;
+};
 
-Ice &Ice::operator=(Ice const &other)
-{
-    this->type = other.type;
-    return (*this);
-}
-
-Ice::~Ice()
-{
-}
-
-Ice *Ice::clone() const
-{
-    Ice *r = new Ice(*this);
-    return (r);
-}
-
-void Ice::use(ICharacter& target)
-{
-    std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
-}
+#endif

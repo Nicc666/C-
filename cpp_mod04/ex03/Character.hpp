@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*    Character.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nspinell <nspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,34 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 
-Ice::Ice() : AMateria("ice")
-{
-}
+#include "ICharacter.hpp"
+#include "AMateria.hpp"
 
-Ice::Ice(Ice const &other) : AMateria(other)
+class Character : public ICharacter
 {
-    *this = other;
-}
+	private:
+		std::string name;
+		AMateria *inventory[4];
+	public:
+		Character();
+		Character(std::string const &name);
+		virtual ~Character() {}
+		std::string const & getName() const;
+		void equip(AMateria* m);
+		void unequip(int idx);
+		void use(int idx, ICharacter& target);
+};
 
-Ice &Ice::operator=(Ice const &other)
-{
-    this->type = other.type;
-    return (*this);
-}
-
-Ice::~Ice()
-{
-}
-
-Ice *Ice::clone() const
-{
-    Ice *r = new Ice(*this);
-    return (r);
-}
-
-void Ice::use(ICharacter& target)
-{
-    std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
-}
+#endif

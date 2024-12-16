@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nspinell <nspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,34 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
+#include "Cure.hpp"
 
-Ice::Ice() : AMateria("ice")
+Cure::Cure() : AMateria("cure")
 {
 }
 
-Ice::Ice(Ice const &other) : AMateria(other)
+Cure::Cure(Cure const &other) : AMateria(other)
 {
     *this = other;
 }
 
-Ice &Ice::operator=(Ice const &other)
+Cure &Cure::operator=(Cure const &other)
 {
     this->type = other.type;
     return (*this);
 }
 
-Ice::~Ice()
+Cure::~Cure()
 {
 }
 
-Ice *Ice::clone() const
+Cure *Cure::clone() const
 {
-    Ice *r = new Ice(*this);
+    Cure *r = new Cure(*this);
     return (r);
 }
 
-void Ice::use(ICharacter& target)
+void Cure::use(ICharacter& target)
 {
-    std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+    std::cout << "* heals" << target.getName() << "’s wounds *" << std::endl;
 }
