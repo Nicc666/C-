@@ -74,7 +74,7 @@ void Character::equip(AMateria* m)
     {
         if (this->inventory[i] == NULL)
         {
-            this->inventory[i] = m->clone();
+            this->inventory[i] = m;
             return;
         }
     }

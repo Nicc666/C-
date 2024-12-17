@@ -57,7 +57,7 @@ void MateriaSource::learnMateria(AMateria* m)
 	{
 		if (mat[i] == NULL)
 		{
-			mat[i] = m->clone();
+			mat[i] = m;
 			return;
 		}
 	}
@@ -70,7 +70,9 @@ AMateria* MateriaSource::createMateria(std::string const &type)
 	for (int i = 0; i < 4; i++)
 	{
 		if (mat[i]!= NULL && mat[i]->getType() == type)
+		{
 			return (mat[i]->clone());
+		}
 	}
 	std::cout << "No type found in Mat Source array" << std::endl;
 	return (NULL);
