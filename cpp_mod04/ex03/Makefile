@@ -1,9 +1,9 @@
-SRCS = main.cpp Character.cpp AMateria.cpp Ice.cpp Cure.cpp
+SRCS = main.cpp Character.cpp AMateria.cpp Ice.cpp Cure.cpp MateriaSource.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = materia
 

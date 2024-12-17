@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*    MateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nspinell <nspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,39 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
-#include "ICharacter.hpp"
+#ifndef MATERIASOURCE_HPP
+#define MATERIASOURCE_HPP
 
-AMateria::AMateria() : type("empty")
-{
-}
+#include "IMateriaSource.hpp"
 
-AMateria::AMateria(std::string const &type) : type(type)
+class MateriaSource : public IMateriaSource
 {
-}
+	private:
+		AMateria *mat[4];
+	public:
+		MateriaSource();
+		virtual ~MateriaSource();
+		MateriaSource(MateriaSource const &other);
+		MateriaSource &operator=(MateriaSource const &other);
+		virtual void learnMateria(AMateria* m);
+		virtual AMateria* createMateria(std::string const &type);
+};
 
-AMateria::AMateria(AMateria const &other)
-{
-    *this = other;
-}
-
-AMateria &AMateria::operator=(AMateria const &other)
-{
-    this->type = other.type;
-    return (*this);
-}
-
-AMateria::~AMateria()
-{
-}
-
-std::string const &AMateria::getType() const
-{
-    return (this->type);
-}
-
-void AMateria::use(ICharacter& target)
-{
-    (void)target;
-    std::cout << "AMateria generic use" << std::endl;
-}
+#endif

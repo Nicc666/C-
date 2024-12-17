@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "Character.hpp"
-#include "ICharacter.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
 

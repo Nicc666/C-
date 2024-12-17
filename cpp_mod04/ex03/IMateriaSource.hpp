@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*    IMateriaSource.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nspinell <nspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,39 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef IMATERIASOURCE_HPP
+#define IMATERIASOURCE_HPP
+
 #include "AMateria.hpp"
-#include "ICharacter.hpp"
 
-AMateria::AMateria() : type("empty")
+class IMateriaSource
 {
-}
+	public:
+		virtual ~IMateriaSource() {}
+		virtual void learnMateria(AMateria*) = 0;
+		virtual AMateria* createMateria(std::string const & type) = 0;
+};
 
-AMateria::AMateria(std::string const &type) : type(type)
-{
-}
-
-AMateria::AMateria(AMateria const &other)
-{
-    *this = other;
-}
-
-AMateria &AMateria::operator=(AMateria const &other)
-{
-    this->type = other.type;
-    return (*this);
-}
-
-AMateria::~AMateria()
-{
-}
-
-std::string const &AMateria::getType() const
-{
-    return (this->type);
-}
-
-void AMateria::use(ICharacter& target)
-{
-    (void)target;
-    std::cout << "AMateria generic use" << std::endl;
-}
+#endif
