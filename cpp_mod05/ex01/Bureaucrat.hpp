@@ -33,7 +33,7 @@ class Bureaucrat
 			public:
 				virtual const char* what() const throw()
 				{
-					return ("Grade is too high");
+					return ("Bureaucrat: Grade is too high");
 				}
 		};
 		class GradeTooLowException : public std::exception
@@ -41,7 +41,7 @@ class Bureaucrat
 			public:
 				virtual const char* what() const throw()
 				{
-					return ("Grade is too low");
+					return ("Bureaucrat: Grade is too low");
 				}
 		};
 };

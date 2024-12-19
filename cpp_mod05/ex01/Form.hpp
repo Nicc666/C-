@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nspinell <nspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,27 +13,28 @@
 #include <iostream>
 #include <string>
 
-class Bureaucrat
+class Form
 {
 	private:
-		int grade;
 		const std::string name;
+		int firmed;
+		const int gradesign;
+		const int gradeexec;
 	public:
-		Bureaucrat();
-		Bureaucrat(const std::string name, int grade);
-		Bureaucrat(Bureaucrat const &other);
-		Bureaucrat &operator=(Bureaucrat const &other);
-		~Bureaucrat();
-		int getGrade() const;
+		Form();
+		//Form(const std::string name, int grade);
+		Form(Form const &other);
+		Form &operator=(Form const &other);
+		~Form();
+		int getGradeSign() const;
+		int getGradeExec() const;
 		std::string getName() const;
-		void increment();
-		void decrement();
 		class GradeTooHighException : public std::exception
 		{
 			public:
 				virtual const char* what() const throw()
 				{
-					return ("Grade is too high");
+					return ("Form: Grade is too high");
 				}
 		};
 		class GradeTooLowException : public std::exception
@@ -41,9 +42,9 @@ class Bureaucrat
 			public:
 				virtual const char* what() const throw()
 				{
-					return ("Grade is too low");
+					return ("Form: Grade is too low");
 				}
 		};
 };
 
-std::ostream &operator<<(std::ostream &out, Bureaucrat const &b);
+std::ostream &operator<<(std::ostream &out, Form const &b);
