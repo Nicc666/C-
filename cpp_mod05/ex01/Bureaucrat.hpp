@@ -13,6 +13,8 @@
 #include <iostream>
 #include <string>
 
+class Form;
+
 class Bureaucrat
 {
 	private:
@@ -28,6 +30,7 @@ class Bureaucrat
 		std::string getName() const;
 		void increment();
 		void decrement();
+		void signForm(Form &f);
 		class GradeTooHighException : public std::exception
 		{
 			public:

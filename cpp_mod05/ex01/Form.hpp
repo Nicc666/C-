@@ -13,22 +13,26 @@
 #include <iostream>
 #include <string>
 
+class Bureaucrat;
+
 class Form
 {
 	private:
 		const std::string name;
-		int firmed;
+		bool firmed;
 		const int gradesign;
 		const int gradeexec;
 	public:
 		Form();
-		//Form(const std::string name, int grade);
+		Form(const std::string name, int gradesign, int gradeexec);
 		Form(Form const &other);
 		Form &operator=(Form const &other);
 		~Form();
 		int getGradeSign() const;
 		int getGradeExec() const;
 		std::string getName() const;
+		bool getFirmed() const;
+		void beSigned(Bureaucrat &b);
 		class GradeTooHighException : public std::exception
 		{
 			public:

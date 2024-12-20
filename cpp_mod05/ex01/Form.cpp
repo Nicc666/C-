@@ -10,5 +10,63 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Bureaucrat.hpp"
 #include "Form.hpp"
 
+Form::Form() : name("default"), firmed(false), gradesign(50), gradeexec(30)
+{
+}
+
+Form::Form(std::string name, int grades, int gradee) : name(name), firmed(false), gradesign(grades), gradeexec(gradee)
+{
+}
+
+Form::Form(Form const &other) : name(other.name), gradesign(other.gradesign), gradeexec(other.gradeexec)
+{
+	*this = other;
+}
+
+Form &Form::operator=(Form const &other)
+{
+	this->firmed = other.firmed;
+	return (*this);
+}
+
+Form::~Form()
+{
+}
+
+std::string Form::getName() const
+{
+	return (this->name);
+}
+
+int Form::getGradeSign() const
+{
+	return (this->gradesign);
+}
+
+int Form::getGradeExec() const
+{
+	return (this->gradeexec);
+}
+
+bool Form::getFirmed() const
+{
+	return (this->firmed);
+}
+
+void Form::beSigned(Bureaucrat &b)
+{
+	if (b.getGrade() < this->gradesign)
+		this->firmed = true;
+	else
+		throw Form::GradeTooLowException();
+	return;
+}
+
+std::ostream &operator<<(std::ostream &out, Form const &f)
+{
+	std::cout << "Form name:  " << f.getName() << " firmed: " << f.getFirmed() << " grade to sign: " << f.getGradeSign() << " grade to execute: " << f.getGradeExec() << std::endl;
+	return (out);
+}

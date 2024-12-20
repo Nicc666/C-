@@ -11,28 +11,16 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main(void)
 {
 	try
 	{
 		Bureaucrat b("io", 149);
-
 		std::cout << b << std::endl;
 		std::cout << b.getName() << " " << b.getGrade() << std::endl;
 		b.decrement();
-		std::cout << b.getName() << " " << b.getGrade() << std::endl;
-		Bureaucrat c(b);
-		std::cout << c.getName() << " " << c.getGrade() << std::endl;
-		c.increment();
-		std::cout << c.getName() << " " << c.getGrade() << std::endl;
-		Bureaucrat d;
-		d = c;
-		std::cout << d.getName() << " " << d.getGrade() << std::endl;
-		d.decrement();
-		std::cout << d.getName() << " " << d.getGrade() << std::endl;
-		d.decrement();
-		std::cout << d.getName() << " " << d.getGrade() << std::endl;
 	}
 	catch (const std::exception &e)
 	{
