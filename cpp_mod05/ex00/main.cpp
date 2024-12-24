@@ -16,7 +16,9 @@ int main(void)
 {
 	try
 	{
-		Bureaucrat b("io", 149);
+		Bureaucrat b("primo", 149);
+		//Bureaucrat x("io", 152);
+		//Bureaucrat y(x);
 
 		std::cout << b << std::endl;
 		std::cout << b.getName() << " " << b.getGrade() << std::endl;

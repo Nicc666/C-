@@ -13,7 +13,7 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-Form::Form() : name("default"), firmed(false), gradesign(50), gradeexec(30)
+Form::Form() : name("default"), firmed(false), gradesign(50), gradeexec(50)
 {
 }
 

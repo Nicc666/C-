@@ -21,6 +21,8 @@ int main(void)
 		std::cout << b << std::endl;
 		std::cout << b.getName() << " " << b.getGrade() << std::endl;
 		b.decrement();
+		Form f("contratto", 150, 150);
+		std::cout << f << std::endl;
 	}
 	catch (const std::exception &e)
 	{
