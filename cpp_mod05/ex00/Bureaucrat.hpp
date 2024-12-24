@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
+
 #include <iostream>
 #include <string>
 
@@ -47,3 +50,5 @@ class Bureaucrat
 };
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &b);
+
+#endif

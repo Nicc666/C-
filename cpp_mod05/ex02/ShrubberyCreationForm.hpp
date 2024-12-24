@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nspinell <nspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,30 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
+#ifndef SHRUBBERYCREATIONFORM_HPP
+#define SHRUBBERYCREATIONFORM_HPP
 
-int main(void)
+#include "AForm.hpp"
+
+class ShrubberyCreationForm : public AForm
 {
-	try
-	{
-		Bureaucrat b("bur", 139);
-		std::cout << b << std::endl;
-		Bureaucrat c("cur", 2);
-		std::cout << c << std::endl;
-		Bureaucrat d("dur", 150);
-		std::cout << d << std::endl;
+	private:
+		std::string target;
+	public:
+		ShrubberyCreationForm();
+		ShrubberyCreationForm(const std::string target);
+		ShrubberyCreationForm(ShrubberyCreationForm const &other);
+		ShrubberyCreationForm &operator=(ShrubberyCreationForm const &other);
+		virtual ~ShrubberyCreationForm();
+		std::string getTarget() const;
+};
 
-		ShrubberyCreationForm f("targ_pippo");
-		std::cout << f << std::endl;
-		std::cout << f.getTarget() << std::endl;
-		ShrubberyCreationForm g(f);
-		std::cout << g << std::endl;
-		std::cout << g.getTarget() << std::endl;
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << "Exception called: " << e.what() << std::endl;
-	}
-	return(0);
-}
+#endif

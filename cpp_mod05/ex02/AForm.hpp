@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef AFORM_HPP
+#define AFORM_HPP
+
 #include <iostream>
 #include <string>
 
@@ -27,7 +30,7 @@ class AForm
 		AForm(const std::string name, int gradesign, int gradeexec);
 		AForm(AForm const &other);
 		AForm &operator=(AForm const &other);
-		~AForm();
+		virtual ~AForm() = 0;
 		int getGradeSign() const;
 		int getGradeExec() const;
 		std::string getName() const;
@@ -52,3 +55,5 @@ class AForm
 };
 
 std::ostream &operator<<(std::ostream &out, AForm const &b);
+
+#endif

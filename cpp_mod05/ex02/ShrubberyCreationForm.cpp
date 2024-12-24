@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nspinell <nspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,27 +13,30 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 
-int main(void)
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyForm", 145, 137), target("default")
 {
-	try
-	{
-		Bureaucrat b("bur", 139);
-		std::cout << b << std::endl;
-		Bureaucrat c("cur", 2);
-		std::cout << c << std::endl;
-		Bureaucrat d("dur", 150);
-		std::cout << d << std::endl;
+}
 
-		ShrubberyCreationForm f("targ_pippo");
-		std::cout << f << std::endl;
-		std::cout << f.getTarget() << std::endl;
-		ShrubberyCreationForm g(f);
-		std::cout << g << std::endl;
-		std::cout << g.getTarget() << std::endl;
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << "Exception called: " << e.what() << std::endl;
-	}
-	return(0);
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubbery", 145, 137), target(target)
+{
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other) : AForm("Shrubbery", 145, 137)
+{
+	*this = other;
+}
+
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm const &other)
+{
+	this->target = other.target;
+	return (*this);
+}
+
+ShrubberyCreationForm::~ShrubberyCreationForm()
+{
+}
+
+std::string ShrubberyCreationForm::getTarget() const
+{
+	return (this->target);
 }

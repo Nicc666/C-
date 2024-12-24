@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FORM_HPP
+#define FORM_HPP
+
 #include <iostream>
 #include <string>
 
@@ -52,3 +55,5 @@ class Form
 };
 
 std::ostream &operator<<(std::ostream &out, Form const &b);
+
+#endif
