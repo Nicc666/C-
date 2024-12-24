@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nspinell <nspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,52 +11,52 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
-Form::Form() : name("default"), firmed(false), gradesign(50), gradeexec(50)
+AForm::AForm() : name("default"), firmed(false), gradesign(50), gradeexec(50)
 {
 }
 
-Form::Form(std::string name, int grades, int gradee) : name(name), firmed(false), gradesign(grades), gradeexec(gradee)
+AForm::AForm(std::string name, int grades, int gradee) : name(name), firmed(false), gradesign(grades), gradeexec(gradee)
 {
 }
 
-Form::Form(Form const &other) : name(other.name), gradesign(other.gradesign), gradeexec(other.gradeexec)
+AForm::AForm(AForm const &other) : name(other.name), gradesign(other.gradesign), gradeexec(other.gradeexec)
 {
 	*this = other;
 }
 
-Form &Form::operator=(Form const &other)
+AForm &AForm::operator=(AForm const &other)
 {
 	this->firmed = other.firmed;
 	return (*this);
 }
 
-Form::~Form()
+AForm::~AForm()
 {
 }
 
-std::string Form::getName() const
+std::string AForm::getName() const
 {
 	return (this->name);
 }
 
-int Form::getGradeSign() const
+int AForm::getGradeSign() const
 {
 	return (this->gradesign);
 }
 
-int Form::getGradeExec() const
+int AForm::getGradeExec() const
 {
 	return (this->gradeexec);
 }
 
-bool Form::getFirmed() const
+bool AForm::getFirmed() const
 {
 	return (this->firmed);
 }
 
-bool Form::beSigned(Bureaucrat &b)
+bool AForm::beSigned(Bureaucrat &b)
 {
 	if (this->firmed == true)
 	{
@@ -66,11 +66,11 @@ bool Form::beSigned(Bureaucrat &b)
 	if (b.getGrade() <= this->gradesign)
 		this->firmed = true;
 	else
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	return (1);
 }
 
-std::ostream &operator<<(std::ostream &out, Form const &f)
+std::ostream &operator<<(std::ostream &out, AForm const &f)
 {
 	std::cout << "Form name: " << f.getName() << ", firmed: " << f.getFirmed() << ", grade to sign: " << f.getGradeSign() << ", grade to execute: " << f.getGradeExec();
 	return (out);

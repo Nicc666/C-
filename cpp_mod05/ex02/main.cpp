@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 int main(void)
 {
@@ -22,8 +22,8 @@ int main(void)
 		Bureaucrat d("dur", 150);
 		std::cout << b << std::endl;
 		b.decrement();
-		Form f("contract", 140, 140);
-		Form g("newcontr", 1, 1);
+		AForm f("contract", 140, 140);
+		AForm g("newcontr", 1, 1);
 		std::cout << f << std::endl;
 		std::cout << f.getName() << " " << f.getFirmed() << " " << f.getGradeSign() << " " << f.getGradeExec() << std::endl;
 		b.signForm(f);

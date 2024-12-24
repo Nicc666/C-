@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nspinell <nspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,7 +15,7 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 		const std::string name;
@@ -23,11 +23,11 @@ class Form
 		const int gradesign;
 		const int gradeexec;
 	public:
-		Form();
-		Form(const std::string name, int gradesign, int gradeexec);
-		Form(Form const &other);
-		Form &operator=(Form const &other);
-		~Form();
+		AForm();
+		AForm(const std::string name, int gradesign, int gradeexec);
+		AForm(AForm const &other);
+		AForm &operator=(AForm const &other);
+		~AForm();
 		int getGradeSign() const;
 		int getGradeExec() const;
 		std::string getName() const;
@@ -51,4 +51,4 @@ class Form
 		};
 };
 
-std::ostream &operator<<(std::ostream &out, Form const &b);
+std::ostream &operator<<(std::ostream &out, AForm const &b);
