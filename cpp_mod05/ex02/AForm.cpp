@@ -70,6 +70,19 @@ bool AForm::beSigned(Bureaucrat &b)
 	return (1);
 }
 
+void AForm::execute(Bureaucrat const &executor) const
+{
+	if (this->firmed == false)
+		throw AForm::NotSignedException();
+	if (executor.getGrade() > this->gradeexec)
+		throw AForm::GradeToExecuteException();
+	else
+	{
+		this->execution();
+	}
+	return ;
+}
+
 std::ostream &operator<<(std::ostream &out, AForm const &f)
 {
 	std::cout << "Form name: " << f.getName() << ", firmed: " << f.getFirmed() << ", grade to sign: " << f.getGradeSign() << ", grade to execute: " << f.getGradeExec();

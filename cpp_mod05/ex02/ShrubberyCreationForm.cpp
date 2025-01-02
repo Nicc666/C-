@@ -40,3 +40,28 @@ std::string ShrubberyCreationForm::getTarget() const
 {
 	return (this->target);
 }
+
+void ShrubberyCreationForm::execution() const
+{
+	std::ofstream file;
+	std::string filename;
+	filename = this->target + "_shrubbery";
+	file.open(filename.c_str(), std::ios_base::out);
+	if (file.is_open() == false)
+	{
+		std::cout << "Error: Opening file" << std::endl;
+		return ;
+	}
+	file << "    ------    " << std::endl;
+	file << "  /        \\ " << std::endl;
+	file << " |          | " << std::endl;
+	file << " |          | " << std::endl;
+	file << " \\          / " << std::endl;
+	file << "  \\        / " << std::endl;
+	file << "    |    | " << std::endl;
+	file << "    |    | " << std::endl;
+	file << "    |    | " << std::endl;
+	file << "   /      \\ " << std::endl;
+	file.close();
+	return ;
+}

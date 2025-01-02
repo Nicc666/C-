@@ -14,6 +14,8 @@
 #define AFORM_HPP
 
 #include <iostream>
+#include <ostream>
+#include <fstream>
 #include <string>
 
 class Bureaucrat;
@@ -25,6 +27,8 @@ class AForm
 		bool firmed;
 		const int gradesign;
 		const int gradeexec;
+	protected:
+		virtual void execution() const = 0;
 	public:
 		AForm();
 		AForm(const std::string name, int gradesign, int gradeexec);
@@ -36,6 +40,7 @@ class AForm
 		std::string getName() const;
 		bool getFirmed() const;
 		bool beSigned(Bureaucrat &b);
+		void execute(Bureaucrat const &executor) const;
 		class GradeTooHighException : public std::exception
 		{
 			public:
@@ -50,6 +55,22 @@ class AForm
 				virtual const char* what() const throw()
 				{
 					return ("Form: Grade is too low");
+				}
+		};
+		class GradeToExecuteException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("Form: Grade is not enough to execute");
+				}
+		};
+		class NotSignedException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("Form: not signed");
 				}
 		};
 };

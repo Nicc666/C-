@@ -17,7 +17,7 @@ int main(void)
 {
 	try
 	{
-		Bureaucrat b("bur", 139);
+		Bureaucrat b("bur", 135);
 		std::cout << b << std::endl;
 		Bureaucrat c("cur", 2);
 		std::cout << c << std::endl;
@@ -30,6 +30,13 @@ int main(void)
 		ShrubberyCreationForm g(f);
 		std::cout << g << std::endl;
 		std::cout << g.getTarget() << std::endl;
+		g.beSigned(b);
+		b.executeForm(g);
+
+		g.beSigned(d);
+		c.executeForm(f);
+		d.executeForm(f);
+		std::cout << "-------------------------------------" << std::endl;
 	}
 	catch (const std::exception &e)
 	{
