@@ -17,6 +17,7 @@
 #include <ostream>
 #include <fstream>
 #include <string>
+#include <cstdlib>
 
 class Bureaucrat;
 
