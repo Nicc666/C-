@@ -26,7 +26,10 @@ Intern::Intern(Intern const &other) : possibleform(other.possibleform)
 
 Intern &Intern::operator=(Intern const &other)
 {
-	(void)other;
+	for(int i = 0; i < 3; i++)
+	{
+		this->possibleform[i] = other.possibleform[i];
+	}
 	return (*this);
 }
 
