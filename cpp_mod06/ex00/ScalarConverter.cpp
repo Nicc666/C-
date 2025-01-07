@@ -160,18 +160,6 @@ int verify(std::string s) //0 char, 1 int, 2 float, 3 double, 4 pseudol, 5 error
 	return(5);
 }
 
-void printout(char c, int x, float f, double d)
-{
-	if (std::isprint(c))
-		std::cout << "char: " << c << std::endl;
-	else
-		std::cout << "char: Non displayable" << std::endl;
-	std::cout << "int: " << x << std::endl;
-	std::cout << "float: " << f << "f" << std::endl;
-	std::cout << "double: " << d << std::endl;
-	return;
-}
-
 void printchar(std::string &s)
 {
 	char c;
@@ -242,20 +230,25 @@ void printfloat(std::string &s)
 		x = static_cast<int>(f);
 		over = false;
 	}
-	if (x < SCHAR_MIN || x > SCHAR_MAX)
+	if (over == true)
+	{
 		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+	}
 	else
 	{
-		c = static_cast<char>(x);
-		if (std::isprint(c))
-			std::cout << "char: " << c << std::endl;
+		if (x < SCHAR_MIN || x > SCHAR_MAX)
+			std::cout << "char: impossible" << std::endl;
 		else
-			std::cout << "char: Non displayable" << std::endl;
-	}
-	if (over == true)
-		std::cout << "int: impossible" << std::endl;
-	else
+		{
+			c = static_cast<char>(x);
+			if (std::isprint(c))
+				std::cout << "char: " << c << std::endl;
+			else
+				std::cout << "char: Non displayable" << std::endl;
+		}
 		std::cout << "int: " << x << std::endl;
+	}
 	d = static_cast<double>(f);
 	std::cout << "float: " << f << "f" << std::endl;
 	std::cout << "double: " << d << std::endl;
@@ -278,20 +271,25 @@ void printdouble(std::string &s)
 		x = static_cast<int>(d);
 		over = false;
 	}
-	if (x < SCHAR_MIN || x > SCHAR_MAX)
+	if (over == true)
+	{
 		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+	}
 	else
 	{
-		c = static_cast<char>(x);
-		if (std::isprint(c))
-			std::cout << "char: " << c << std::endl;
+		if (x < SCHAR_MIN || x > SCHAR_MAX)
+			std::cout << "char: impossible" << std::endl;
 		else
-			std::cout << "char: Non displayable" << std::endl;
-	}
-	if (over == true)
-		std::cout << "int: impossible" << std::endl;
-	else
+		{
+			c = static_cast<char>(x);
+			if (std::isprint(c))
+				std::cout << "char: " << c << std::endl;
+			else
+				std::cout << "char: Non displayable" << std::endl;
+		}
 		std::cout << "int: " << x << std::endl;
+	}
 	f = static_cast<float>(d);
 	std::cout << "float: " << f << "f" << std::endl;
 	std::cout << "double: " << d << std::endl;
