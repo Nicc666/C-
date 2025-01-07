@@ -16,14 +16,18 @@ int main(void)
 {
 	Data data;
 	uintptr_t int_add;
-	char c = 'Q';
+	Data *data_test;
 
 	data.s = "Ciao";
 	data.x = 12;
-	data.c = &c;
+	data.c = 'Q';
+	std::cout << "Original Data address: " << &data << std::endl;
 	int_add = Serializer::serialize(&data);
-	std::cout << "Data address: " << &data << std::endl;
 	std::cout << "Serialized address: " << int_add << std::endl;
-	std::cout << "Deserialized address: " << Serializer::deserialize(int_add) << std::endl;
+	data_test = Serializer::deserialize(int_add);
+	std::cout << "Deserialized address: " << data_test << std::endl;
+	std::cout << "Data test s: " << data_test->s << std::endl;
+	std::cout << "Data test x: " << data_test->x << std::endl;
+	std::cout << "Data test c: " << data_test->c << std::endl;
 	return(0);
 }

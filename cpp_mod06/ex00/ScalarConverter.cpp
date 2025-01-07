@@ -188,8 +188,8 @@ void printchar(std::string &s)
 	else
 		std::cout << "char: Non displayable" << std::endl;
 	std::cout << "int: " << x << std::endl;
-	std::cout << "float: " << f << "f" << std::endl;
-	std::cout << "double: " << d << std::endl;
+	std::cout << "float: " << f << ".0f" << std::endl;
+	std::cout << "double: " << d << ".0" << std::endl;
 	return;
 }
 

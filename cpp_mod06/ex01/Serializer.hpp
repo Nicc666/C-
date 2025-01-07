@@ -21,7 +21,7 @@ typedef struct sData
 {
 	std::string s;
 	int x;
-	char *c;
+	char c;
 }	Data;
 
 class Serializer
