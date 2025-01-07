@@ -301,10 +301,8 @@ void printdouble(std::string &s)
 void ScalarConverter::convert(std::string s)
 {
 	int ret = 5;
+
 	ret = verify(s);
-
-	std::cout << "ret: " << ret << std::endl; //test
-
 	if (ret == 0)
 		return(printchar(s));
 	else if (ret == 1)
