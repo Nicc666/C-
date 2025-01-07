@@ -37,7 +37,7 @@ bool isinteger(std::string s)
 
 	if (s[i] == '+' || s[i] == '-')
 		i++;
-	for(i=0; s[i] != '\0'; i++)
+	for(i=i; s[i] != '\0'; i++)
 	{
 		if (isdigit(s[i]) == 0)
 		{
@@ -115,7 +115,37 @@ bool isdouble(std::string s)
 		return(0);
 }
 
-int verify(std::string s) //0 char, 1 int, 2 float, 3 double, 5 error
+bool pseudoliterals(std::string s)
+{
+	if (s == "nan" || s == "nanf" )
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: nanf" << std::endl;
+		std::cout << "double: nan" << std::endl;
+		return true;
+	}
+	else if (s == "+inf" || s == "+inff")
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: +inff" << std::endl;
+		std::cout << "double: +inf" << std::endl;
+		return true;
+	}
+	else if (s == "-inf" || s == "-inff")
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: -inff" << std::endl;
+		std::cout << "double: -inf" << std::endl;
+		return true;
+	}
+	else
+		return false;
+}
+
+int verify(std::string s) //0 char, 1 int, 2 float, 3 double, 4 pseudol, 5 error
 {
 	if (s.length() == 1 && isdigit(s[0]) == 0)
 		return (0);
@@ -125,78 +155,167 @@ int verify(std::string s) //0 char, 1 int, 2 float, 3 double, 5 error
 		return(2);
 	if (isdouble(s) == true)
 		return(3);
+	if (pseudoliterals(s) == true)
+		return(4);
 	return(5);
+}
+
+void printout(char c, int x, float f, double d)
+{
+	if (std::isprint(c))
+		std::cout << "char: " << c << std::endl;
+	else
+		std::cout << "char: Non displayable" << std::endl;
+	std::cout << "int: " << x << std::endl;
+	std::cout << "float: " << f << "f" << std::endl;
+	std::cout << "double: " << d << std::endl;
+	return;
+}
+
+void printchar(std::string &s)
+{
+	char c;
+	int x;
+	float f;
+	double d;
+
+	c = s[0];
+	x = static_cast<int>(s[0]);
+	f = static_cast<float>(s[0]);
+	d = static_cast<double>(s[0]);
+	if (std::isprint(c))
+		std::cout << "char: " << c << std::endl;
+	else
+		std::cout << "char: Non displayable" << std::endl;
+	std::cout << "int: " << x << std::endl;
+	std::cout << "float: " << f << "f" << std::endl;
+	std::cout << "double: " << d << std::endl;
+	return;
+}
+
+void printint(std::string &s)
+{
+	char c;
+	int x;
+	float f;
+	double d;
+	long int test;
+
+	test = strtol(s.c_str(), NULL, 10);
+	if (test > INT_MAX || test < INT_MIN)
+	{
+		std::cout << "Error: int overflow" << std::endl;
+		return;
+	}
+	x = static_cast<int>(test);
+	if (x < SCHAR_MIN || x > SCHAR_MAX)
+		std::cout << "char: impossible" << std::endl;
+	else
+	{
+		c = static_cast<char>(x);
+		if (std::isprint(c))
+			std::cout << "char: " << c << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
+	}
+	std::cout << "int: " << x << std::endl;
+	f = static_cast<float>(x);
+	d = static_cast<double>(x);
+	std::cout << "float: " << f << "f" << std::endl;
+	std::cout << "double: " << d << std::endl;
+	return;
+}
+
+void printfloat(std::string &s)
+{
+	char c;
+	int x;
+	float f;
+	double d;
+	bool over;
+
+	f = strtof(s.c_str(), NULL);
+	if (f > INT_MAX || f < INT_MIN)
+		over = true;
+	else
+	{
+		x = static_cast<int>(f);
+		over = false;
+	}
+	if (x < SCHAR_MIN || x > SCHAR_MAX)
+		std::cout << "char: impossible" << std::endl;
+	else
+	{
+		c = static_cast<char>(x);
+		if (std::isprint(c))
+			std::cout << "char: " << c << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
+	}
+	if (over == true)
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << x << std::endl;
+	d = static_cast<double>(f);
+	std::cout << "float: " << f << "f" << std::endl;
+	std::cout << "double: " << d << std::endl;
+	return;
+}
+
+void printdouble(std::string &s)
+{
+	char c;
+	int x;
+	float f;
+	double d;
+	bool over;
+
+	d = strtod(s.c_str(), NULL);
+	if (d > INT_MAX || d < INT_MIN)
+		over = true;
+	else
+	{
+		x = static_cast<int>(d);
+		over = false;
+	}
+	if (x < SCHAR_MIN || x > SCHAR_MAX)
+		std::cout << "char: impossible" << std::endl;
+	else
+	{
+		c = static_cast<char>(x);
+		if (std::isprint(c))
+			std::cout << "char: " << c << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
+	}
+	if (over == true)
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << x << std::endl;
+	f = static_cast<float>(d);
+	std::cout << "float: " << f << "f" << std::endl;
+	std::cout << "double: " << d << std::endl;
+	return;
 }
 
 void ScalarConverter::convert(std::string s)
 {
-	unsigned char c;
-	int x;
-	float f;
-	double d;
 	int ret = 5;
-	std::stringstream ss(s);
-
 	ret = verify(s);
 
 	std::cout << "ret: " << ret << std::endl; //test
 
 	if (ret == 0)
-	{
-		ss >> c;
-		//c = s[0];
-		x = static_cast<int>(s[0]);
-		f = static_cast<float>(s[0]);
-		d = static_cast<double>(s[0]);
-		std::cout << "char: " << c << std::endl;
-		std::cout << "int: " << x << std::endl;
-		std::cout << "float: " << f << std::endl;
-		std::cout << "double: " << d << std::endl;
-		return;
-	}
+		return(printchar(s));
 	else if (ret == 1)
-	{
-		ss >> x;
-		//x = std::stoi(s);
-		c = static_cast<char>(x);
-		f = static_cast<float>(x);
-		d = static_cast<double>(x);
-		std::cout << "char: " << c << std::endl;
-		std::cout << "int: " << x << std::endl;
-		std::cout << "float: " << f << std::endl;
-		std::cout << "double: " << d << std::endl;
-		return;
-	}
+		return(printint(s));
 	else if (ret == 2)
-	{
-		ss >> f;
-		//f = std::stof(s);
-		x = static_cast<int>(f);
-		c = static_cast<char>(x);
-		d = static_cast<double>(f);
-		std::cout << "char: " << c << std::endl;
-		std::cout << "int: " << x << std::endl;
-		std::cout << "float: " << f << std::endl;
-		std::cout << "double: " << d << std::endl;
-		return;
-	}
+		return(printfloat(s));
 	else if (ret == 3)
-	{
-		ss >> d;
-		//d = std::stod(s);
-		x = static_cast<int>(d);
-		c = static_cast<char>(x);
-		f = static_cast<float>(d);
-		std::cout << "char: " << c << std::endl;
-		std::cout << "int: " << x << std::endl;
-		std::cout << "float: " << f << "f" << std::endl;
-		std::cout << "double: " << d << std::endl;
+		return(printdouble(s));
+	else if (ret == 4)
 		return;
-	}
-	else if (ret == 5)
-	{
+	else
 		std::cout << "Error: invalid input" << std::endl;
-		return;
-	}
 	return;
 }
