@@ -11,7 +11,42 @@
 /* ************************************************************************** */
 
 #include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 
 Base::~Base(void)
 {
+}
+
+Base * generate(void)
+{
+	Base *ret;
+	std::srand(std::time(0));
+	if ((std::rand() % 3) == 0)
+		ret = new A();
+	else if ((std::rand() % 3) == 1)
+		ret = new B();
+	else
+		ret = new C();
+	return (ret);
+}
+
+void identify(Base* p)
+{
+	if (dynamic_cast <A*> (p) != NULL)
+		std::cout << "type is A" << std::endl;
+	else if (dynamic_cast <B*> (p) != NULL)
+		std::cout << "type is B" << std::endl;
+	else if (dynamic_cast <C*> (p) != NULL)
+		std::cout << "type is C" << std::endl;
+	else
+		std::cout << "type is unknown" << std::endl;
+	return;
+}
+
+void identify(Base& p)
+{
+	(void)p;
+	return;
 }

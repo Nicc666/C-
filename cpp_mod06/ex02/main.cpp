@@ -17,6 +17,11 @@
 int main(void)
 {
 	Base *b = new Base();
+	Base *test = generate();
+	identify(test);
+	identify(b);
+
 	delete b;
+	delete test;
 	return(0);
 }
