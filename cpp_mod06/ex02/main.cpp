@@ -17,10 +17,19 @@
 int main(void)
 {
 	Base *b = new Base();
-	Base *test = generate();
-	identify(test);
 	identify(b);
 
+	Base *test = generate();
+	identify(test);
+	identify(*test);
+
+	A a;
+	identify(a);
+	B bb;
+	identify(bb);
+	C c;
+	identify(c);
+	
 	delete b;
 	delete test;
 	return(0);

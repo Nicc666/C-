@@ -47,6 +47,32 @@ void identify(Base* p)
 
 void identify(Base& p)
 {
-	(void)p;
-	return;
+	try
+	{
+		dynamic_cast<A&>(p);
+		std::cout << "type is A" << std::endl;
+		return;
+	}
+	catch (std::exception& e)
+	{
+	}
+	try
+	{
+		dynamic_cast<B&>(p);
+		std::cout << "type is B" << std::endl;
+		return;
+	}
+	catch (std::exception& e)
+	{
+	}
+	try
+	{
+		dynamic_cast<C&>(p);
+		std::cout << "type is C" << std::endl;
+		return;
+	}
+	catch (std::exception& e)
+	{
+	}
+	std::cout << "type is unknown" << std::endl;
 }
