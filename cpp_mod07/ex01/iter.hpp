@@ -14,7 +14,7 @@
 #define ITER_HPP
 
 template <typename T>
-void iter(T *first, int length, void (*f)(T &))
+void iter(T *first, int length, void (*function)(T &))
 {
 	return;
 }
