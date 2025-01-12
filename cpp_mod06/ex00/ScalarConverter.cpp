@@ -37,7 +37,7 @@ bool isinteger(std::string s)
 
 	if (s[i] == '+' || s[i] == '-')
 		i++;
-	for(i=i; s[i] != '\0'; i++)
+	for(; s[i] != '\0'; i++)
 	{
 		if (isdigit(s[i]) == 0)
 		{
@@ -223,7 +223,7 @@ void printfloat(std::string &s)
 	bool over;
 
 	f = strtof(s.c_str(), NULL);
-	if (f > INT_MAX || f < INT_MIN)
+	if (f > static_cast<float>(INT_MAX) || f < static_cast<float>(INT_MIN))
 		over = true;
 	else
 	{
@@ -264,7 +264,7 @@ void printdouble(std::string &s)
 	bool over;
 
 	d = strtod(s.c_str(), NULL);
-	if (d > INT_MAX || d < INT_MIN)
+	if (d > static_cast<double>(INT_MAX) || d < static_cast<double>(INT_MIN))
 		over = true;
 	else
 	{
