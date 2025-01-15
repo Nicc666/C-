@@ -49,6 +49,7 @@
         "iomanip": "cpp",
         "ctime": "cpp",
         "iostream": "cpp",
-        "climits": "cpp"
+        "climits": "cpp",
+        "*.tpp": "cpp"
     }
 }
