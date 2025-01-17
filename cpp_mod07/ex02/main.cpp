@@ -13,6 +13,7 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include <string>
 #include "Array.hpp"
 
 #define MAX_VAL 750
@@ -94,6 +95,18 @@ int main(int, char**)
     Array<int> numbers4(140);
     Array<int> numbers5(5);
     numbers5 = numbers4;
-
+    std::cout << "-----------------------------------------------" << std::endl;
+    Array<std::string> string(15);
+    
+    for (int i = 0; i < 15; i++)
+    {
+        char c = 'A' + i;
+        string[i] = "bubu";
+        string[i] += c;
+    }
+    for (int i = 0; i < 10; i++)
+    {
+        std::cout << string[i] << std::endl;
+    }
     return 0;
 }
