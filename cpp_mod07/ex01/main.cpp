@@ -42,6 +42,6 @@ int main( void )
 	{
 		std::cout << array[i] << std::endl;
 	}
-	delete s;
+	delete[] s;
 	return 0;
 }
