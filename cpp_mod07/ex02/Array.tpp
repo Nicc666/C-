@@ -40,6 +40,8 @@ Array<T>::Array(const Array &other)
 template <typename T>
 Array<T> &Array<T>::operator=(const Array &other)
 {
+	if (this == &other)
+		return(*this);
 	this->dim = other.size();
 	if (other.size() == 0)
 	{

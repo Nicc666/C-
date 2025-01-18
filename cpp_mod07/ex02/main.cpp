@@ -108,5 +108,18 @@ int main(int, char**)
     {
         std::cout << string[i] << std::endl;
     }
+    // std::cout << "-----------------------------------------------" << std::endl;
+    // std::cout << "const test" << std::endl;
+    // const int a = 1;
+    // const int b = 2;
+    // const int c = 45;
+    // Array<int*> int_pt(3);
+    // int_pt[0] = <int*>&a;
+    // int_pt[1] = &b;
+    // int_pt[2] = &c;
+    // for (int i = 0; i < 10; i++)
+    // {
+    //     std::cout << int_pt[i] << std::endl;
+    // }
     return 0;
 }
