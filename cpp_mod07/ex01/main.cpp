@@ -25,6 +25,18 @@ void toupperrr(char &c)
 	return;
 }
 
+void readread(const char &c)
+{
+	std::cout << c << std::endl;
+	return;
+}
+
+void print(const int &x)
+{
+	std::cout << x << std::endl;
+	return;
+}
+
 int main( void )
 {
 	int array[5] = {1, 2, 3, 4, 5};
@@ -43,5 +55,11 @@ int main( void )
 		std::cout << array[i] << std::endl;
 	}
 	delete[] s;
+	std::cout << "--------------------------------------------------" << std::endl;
+	const char cc[5] = {'A', 'B', 'C', 'D', 'E'};
+	iter(cc, 5, readread);
+	std::cout << "--------------------------------------------------" << std::endl;
+	const int x[5] = {6, 7, 8, 9, 10};
+	iter(x, 5, print);
 	return 0;
 }

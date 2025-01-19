@@ -27,7 +27,7 @@ class Array
 		Array(const Array &other);
 		Array &operator=(const Array &other);
 		T &operator[](const int &i);
-		//const T &operator[](const int &i) const;
+		const T &operator[](const int &i) const;
 		~Array();
 		size_t size(void) const;
 		class OutlimitsException : public std::exception

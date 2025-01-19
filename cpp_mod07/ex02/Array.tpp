@@ -69,6 +69,17 @@ T &Array<T>::operator[](const int &i)
 }
 
 template <typename T>
+const T &Array<T>::operator[](const int &i) const
+{
+	if (i < 0 || i >= static_cast<int>(this->dim))
+	{
+		throw Array<T>::OutlimitsException();
+	}
+	else
+		return(this->array[i]);
+}
+
+template <typename T>
 Array<T>::~Array()
 {
 	delete[] array;
