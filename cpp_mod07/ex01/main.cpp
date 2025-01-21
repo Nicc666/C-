@@ -13,6 +13,28 @@
 #include <iostream>
 #include "iter.hpp"
 
+class Awesome
+{
+  public:
+    Awesome( void ) : _n( 42 ) { return; }
+    int get( void ) const { return this->_n; }
+  private:
+    int _n;
+};
+
+std::ostream & operator<<( std::ostream & o, Awesome const & rhs )
+{
+  o << rhs.get();
+  return o;
+}
+
+template< typename T >
+void print( const T& x )
+{
+  std::cout << x << std::endl;
+  return;
+}
+
 void increment(int &i)
 {
 	i = i + 10;
@@ -31,7 +53,7 @@ void readread(const char &c)
 	return;
 }
 
-void print(const int &x)
+void print_mio(const int &x)
 {
 	std::cout << x << std::endl;
 	return;
@@ -60,6 +82,15 @@ int main( void )
 	iter(cc, 5, readread);
 	std::cout << "--------------------------------------------------" << std::endl;
 	const int x[5] = {6, 7, 8, 9, 10};
-	iter(x, 5, print);
+	iter(x, 5, print_mio);
+
+	std::cout << "Test ex01.cpp--------------------------------" << std::endl;
+	std::cout << "--------------------------------------------------" << std::endl;
+
+	int tab[] = { 0, 1, 2, 3, 4 };
+	Awesome tab2[5];
+
+	iter( tab, 5, print<const int> );
+	iter( tab2, 5, print<Awesome> );
 	return 0;
 }

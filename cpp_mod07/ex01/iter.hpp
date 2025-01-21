@@ -25,4 +25,16 @@ void iter(T *first, size_t length, void (*function)(T &))
 	return;
 }
 
+template <typename T>
+void iter(const T *first, size_t length, void (*function)(const T &))
+{
+	if (first == NULL)
+		return;
+	for (size_t i = 0; i < length; i++)
+	{
+		function(first[i]);
+	}
+	return;
+}
+
 #endif

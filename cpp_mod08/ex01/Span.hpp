@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   eayfind.hpp                                        :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nspinell <nspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,22 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-#define EASYFIND_HPP
+#ifndef SPAN_HPP
+#define SPAN_HPP
 
 #include <algorithm>
 
 template <typename T>
-int *easyfind(T &src, const int &i)
+class Span
 {
-	typename T::iterator it_b = src.begin();
-	typename T::iterator it_e = src.end();
-	typename T::iterator ret;
-	ret = std::find(it_b, it_e, i);
-	if (ret != it_e)
-		return(&(*ret));
-	else
-		throw std::exception();
+	private:
+		std::vector<int> v;
+	public:
+		Span();
+		Span(unsigned int n);
+		Span(const Span &other);
+		Span &operator=(const Span &other);
+		~Span();
 }
+
+#include "Span.tpp"
 
 #endif
