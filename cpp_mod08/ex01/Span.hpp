@@ -14,20 +14,43 @@
 #define SPAN_HPP
 
 #include <algorithm>
+#include <vector>
+#include <climits>
+#include <iostream>
 
-template <typename T>
 class Span
 {
 	private:
 		std::vector<int> v;
+		unsigned int max;
 	public:
 		Span();
 		Span(unsigned int n);
 		Span(const Span &other);
 		Span &operator=(const Span &other);
 		~Span();
-}
-
-#include "Span.tpp"
+		void addNumber(int number);
+		int shortestSpan();
+		int longestSpan();
+		int getvnum(int i);
+		void printvector(void);
+		void insertmanynum(std::vector<int> v2);
+		class OutlimitsException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("vector maximum numbers reached");
+				}
+		};
+		class spanException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("not possible calculate span");
+				}
+		};
+};
 
 #endif

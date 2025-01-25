@@ -16,14 +16,12 @@
 #include <algorithm>
 
 template <typename T>
-int *easyfind(T &src, const int &i)
+typename T::iterator easyfind(T &src, const int &i)
 {
-	typename T::iterator it_b = src.begin();
-	typename T::iterator it_e = src.end();
 	typename T::iterator ret;
-	ret = std::find(it_b, it_e, i);
-	if (ret != it_e)
-		return(&(*ret));
+	ret = std::find(src.begin(), src.end(), i);
+	if (ret != src.end())
+		return(ret);
 	else
 		throw std::exception();
 }

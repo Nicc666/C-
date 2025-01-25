@@ -1,9 +1,9 @@
-SRCS = main.cpp
+SRCS = main.cpp Span.cpp
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = easyfind
+NAME = span
 
 all: $(NAME)
 

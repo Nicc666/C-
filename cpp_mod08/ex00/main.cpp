@@ -21,11 +21,11 @@ int main(int, char**)
 	std::vector<int> v(arr, arr + sizeof(arr) / sizeof(int));
 	try
 	{
-		int *x;
+		std::vector<int>::iterator it;
 		int y = 12;
 		int z = 123;
-		x = easyfind(v, 6);
-		std::cout << *x << std::endl;
+		it = easyfind(v, 6);
+		std::cout << *it << std::endl;
 		std::cout << *easyfind(v, y) << std::endl;
 		std::cout << *easyfind(v, z) << std::endl;
 	}
