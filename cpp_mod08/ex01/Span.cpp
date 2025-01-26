@@ -12,23 +12,16 @@
 
 #include "Span.hpp"
 
-Span::Span()
+Span::Span() : max(0)
 {
-	std::vector<int> v(0);
-	max = 0;
 }
 
-Span::Span(unsigned int n)
+Span::Span(unsigned int n) : max(n)
 {
-	std::vector<int> v(n);
-	max = n;
 }
 
-Span::Span(const Span &other)
+Span::Span(const Span &other) : v(other.v), max(other.max)
 {
-	std::vector<int> v(0);
-	max = 0;
-	*this = other;
 }
 
 Span &Span::operator=(const Span &other)
@@ -81,7 +74,17 @@ int Span::longestSpan(void)
 
 int Span::getvnum(int i)
 {
+	if (i < 0 || i >= static_cast<int>(this->v.size()))
+	{
+		std::cout << "invalid index" << std::endl;
+		return (-1);
+	}
 	return(this->v[i]);
+}
+
+unsigned int Span::getmax(void)
+{
+	return(this->max);
 }
 
 void Span::printvector(void)
@@ -95,7 +98,7 @@ void Span::printvector(void)
 
 void Span::insertmanynum(std::vector<int> v2)
 {
-	if (this->v.size() + v2.size() == this->max || v2.size() == 0)
+	if ((this->v.size() + v2.size()) > this->max || v2.size() == 0)
 		throw Span::OutlimitsException();
 	this->v.insert(this->v.end(), v2.begin(), v2.end());
 }

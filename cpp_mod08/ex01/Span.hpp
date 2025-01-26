@@ -33,6 +33,7 @@ class Span
 		int shortestSpan();
 		int longestSpan();
 		int getvnum(int i);
+		unsigned int getmax(void);
 		void printvector(void);
 		void insertmanynum(std::vector<int> v2);
 		class OutlimitsException : public std::exception
