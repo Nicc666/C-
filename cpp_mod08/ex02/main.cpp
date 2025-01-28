@@ -13,7 +13,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <stack>
 #include <list>
 #include "MutantStack.hpp"
 
@@ -81,6 +80,15 @@ int main()
 	for (; copy != copy2; copy++)
 	{
 		std::cout << *copy << std::endl;
+	}
+	std::cout << "operator = test................" << std::endl;
+	MutantStack<double> dio3;
+	dio3 = dio2;
+	MutantStack<double>::iterator copy3 = dio3.begin();
+	MutantStack<double>::iterator copy33 = dio3.end();
+	for (; copy3 != copy33; copy3++)
+	{
+		std::cout << *copy3 << std::endl;
 	}
 	return 0;
 }

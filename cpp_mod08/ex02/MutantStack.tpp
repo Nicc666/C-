@@ -13,7 +13,7 @@
 #include "MutantStack.hpp"
 
 template <typename T>
-MutantStack<T>::MutantStack()
+MutantStack<T>::MutantStack() : std::stack<T>()
 {
 }
 
