@@ -50,6 +50,7 @@
         "ctime": "cpp",
         "iostream": "cpp",
         "climits": "cpp",
-        "*.tpp": "cpp"
+        "*.tpp": "cpp",
+        "list": "cpp"
     }
 }

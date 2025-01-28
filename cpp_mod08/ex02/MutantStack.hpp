@@ -14,13 +14,16 @@
 #define MUTANTSTACK_HPP
 
 template <typename T>
-class MutantStack : public std::stack
+class MutantStack : public std::stack<T>
 {
 	public:
 		MutantStack();
 		MutantStack(const MutantStack &other);
 		MutantStack &operator=(const MutantStack &other);
 		virtual ~MutantStack();
+		typedef typename std::stack<T>::container_type::iterator iterator;
+		iterator begin(void);
+		iterator end(void);
 };
 
 #include "MutantStack.tpp"
