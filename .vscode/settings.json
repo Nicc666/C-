@@ -51,6 +51,7 @@
         "iostream": "cpp",
         "climits": "cpp",
         "*.tpp": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "map": "cpp"
     }
 }
