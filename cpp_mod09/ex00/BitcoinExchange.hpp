@@ -28,4 +28,7 @@ class BitcoinExchange
 		~BitcoinExchange(void);
 		int fillmap(const char *file);
 		void printmap(void);
+		int search(char *file);
+		void searchdatabase(std::string d, double num);
+		bool controlinput(std::string dat, double d);
 };

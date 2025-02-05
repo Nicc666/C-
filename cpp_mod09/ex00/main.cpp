@@ -22,7 +22,8 @@ int main(int argc, char **argv)
 	(void)argv;
 	BitcoinExchange bit;
 	bit.fillmap("data.csv");
-	bit.printmap();
+	//bit.printmap();
+	bit.search(argv[1]);
 /*
 	std::string s;
 	while (std::getline(input, s))
