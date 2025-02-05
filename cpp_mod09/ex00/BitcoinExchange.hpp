@@ -12,10 +12,12 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <string>
 #include <map>
-//#include <ctime>
+#include <ctime>
 #include <cstdlib>
+#include <iomanip>
 
 class BitcoinExchange
 {
@@ -26,9 +28,11 @@ class BitcoinExchange
 		BitcoinExchange(const BitcoinExchange &other);
 		BitcoinExchange &operator=(const BitcoinExchange &other);
 		~BitcoinExchange(void);
-		int fillmap(const char *file);
+		bool fillmap(const char *file);
 		void printmap(void);
-		int search(char *file);
+		bool btcsearch(char *file);
 		void searchdatabase(std::string d, double num);
 		bool controlinput(std::string dat, double d);
+		bool checkdate(std::string dat);
+		bool isdouble(std::string str);
 };
