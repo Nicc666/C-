@@ -45,7 +45,7 @@ bool BitcoinExchange::fillmap(const char *file)
 	std::getline(input, s);
 	if (input.eof() == true)
 	{
-		std::cout << "Error: Empty databse" << std::endl;
+		std::cout << "Error: Empty database" << std::endl;
 		return (false);
 	}
 	if (s != "date,exchange_rate")

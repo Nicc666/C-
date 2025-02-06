@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 		return(1);
 	}
 	BitcoinExchange bit;
-	if (!bit.fillmap("data_err.csv"))
+	if (!bit.fillmap("empty.csv"))
 	{
 		std::cout << "Error: provide good database" << std::endl;
 		return(1);
