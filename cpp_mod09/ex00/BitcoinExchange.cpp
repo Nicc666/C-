@@ -58,11 +58,20 @@ bool BitcoinExchange::fillmap(const char *file)
 		r = s.find(",");
 		if (r != 10)
 		{
-			std::cout << "Error format" << std::endl;
+			std::cout << "Error database format" << std::endl;
 			return(false);
 		}
 		std::string num = s.substr((r + 1), s.size());
-		this->data.insert(std::pair<std::string, double>(s.substr(0, r), strtod(num.c_str(), NULL)));
+		std::string dat = (s.substr(0, r));
+		if (!isdouble(num))
+		{
+			std::cout << "Error in database input number" << s << std::endl;
+			return(false);
+		}
+		double d = (strtod(num.c_str(), NULL));
+		if (!this->controlinput(dat, d))
+			return(false);
+		this->data.insert(std::pair<std::string, double>(dat, strtod(num.c_str(), NULL)));
 	}
 	return(true);
 }

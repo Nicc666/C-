@@ -18,10 +18,16 @@
 int main(int argc, char **argv)
 {
 	if (argc != 2)
-		return 1;
-	BitcoinExchange bit;
-	if (!bit.fillmap("data.csv"))
+	{
+		std::cout << "Error: arg numbers" << std::endl;
 		return(1);
+	}
+	BitcoinExchange bit;
+	if (!bit.fillmap("data_err.csv"))
+	{
+		std::cout << "Error: provide good database" << std::endl;
+		return(1);
+	}
 	//bit.printmap();
 	if (!bit.btcsearch(argv[1]))
 		return(1);
