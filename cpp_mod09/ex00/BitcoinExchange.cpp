@@ -25,6 +25,7 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 {
 	if (this == &other)
 		return(*this);
+	this->data = other.data;
 	return(*this);
 }
 
@@ -69,7 +70,7 @@ bool BitcoinExchange::fillmap(const char *file)
 			return(false);
 		}
 		double d = (strtod(num.c_str(), NULL));
-		if (!this->controlinput(dat, d))
+		if (!this->controldata(dat, d))
 			return(false);
 		this->data.insert(std::pair<std::string, double>(dat, strtod(num.c_str(), NULL)));
 	}
@@ -181,6 +182,21 @@ bool BitcoinExchange::controlinput(std::string dat, double d)
 	return(true);
 }
 
+bool BitcoinExchange::controldata(std::string dat, double d)
+{
+	if (d < 0)
+	{
+		std::cout << "Error: not a positive number." << std::endl;
+		return(false);
+	}
+	if (!checkdate(dat))
+	{
+		std::cout << "Error: bad date format." << std::endl;
+		return(false);
+	}
+	return(true);
+}
+
 bool BitcoinExchange::checkdate(std::string dat)
 {
 	int year, month, day;
@@ -194,6 +210,8 @@ bool BitcoinExchange::checkdate(std::string dat)
     if (year < 2009 || year > 2025 || month < 1 || month > 12 || day < 1 || day > 31)
 		return false;
     if ((month == 2 && day > 29) || ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30))
+		return false;
+	if (month == 2 && day == 29 && (year % 4 != 0 || (year % 100 == 0 && year % 400 != 0)))
 		return false;
 	return(true);
 }
@@ -227,4 +245,23 @@ bool BitcoinExchange::isdouble(std::string s)
 		return(true);
 	else
 		return(false);
+}
+
+bool BitcoinExchange::issorted(void)
+{
+	std::map<std::string, double>::iterator it;
+	std::map<std::string, double>::iterator it_prev;
+	for (it = this->data.begin(); it != this->data.end(); it++)
+	{
+		if (it == this->data.begin())
+			continue;
+		it_prev = --it;
+		it++;
+		if (it->first < it_prev->first)
+		{
+			std::cout << "Error: database not sorted" << std::endl;
+			return(false);
+		}
+	}
+	return(true);
 }

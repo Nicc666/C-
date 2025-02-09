@@ -33,6 +33,8 @@ class BitcoinExchange
 		bool btcsearch(char *file);
 		void searchdatabase(std::string d, double num);
 		bool controlinput(std::string dat, double d);
+		bool controldata(std::string dat, double d);
 		bool checkdate(std::string dat);
 		bool isdouble(std::string str);
+		bool issorted(void);
 };
