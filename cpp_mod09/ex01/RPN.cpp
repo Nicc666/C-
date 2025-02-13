@@ -71,7 +71,7 @@ bool RPN::isnumber(std::string s)
 
 void RPN::rpn(std::string s)
 {
-	int i;
+	long int i;
 	std::istringstream ss(s);
 	std::string str;
 	while (ss >> str)
@@ -79,6 +79,8 @@ void RPN::rpn(std::string s)
 		if (str.size() > 0 && this->isnumber(str) == true)
 		{
 			i = strtol(str.c_str(), NULL, 10);
+			if (i > INT_MAX || i < INT_MIN)
+				throw RPN::invalidexpression();
 			data.push_back(i);
 		}
 		else if (str.size() == 1 && (str[0] == '+' || str[0] == '-' || str[0] == '*' || str[0] == '/'))

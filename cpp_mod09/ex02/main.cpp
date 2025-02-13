@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nspinell <nspinell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,38 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
-#include <list>
-#include <cstdlib>
-#include <climits>
+#include "PmergeMe.hpp"
 
-class RPN
+int main(int argc, char **argv)
 {
-	private:
-		std::list<int> data;
-	public:
-		RPN(void);
-		RPN(const RPN &other);
-		RPN &operator=(const RPN &other);
-		~RPN(void);
-		static bool inputerror(std::string s);
-		void printlist(void);
-		void rpn(std::string s);
-		bool isnumber(std::string s);
-		bool operation(char c);
-		int add(int x, int y);
-		int minus(int x, int y);
-		int moltiplication(int x, int y);
-		int divide(int x, int y);
-		class invalidexpression : public std::exception
-		{
-			public:
-				virtual const char* what() const throw()
-				{
-					return ("Exception: Invalid expression");
-				}
-		};
-};
+	PmergeMe pm;
+	pm.algoritm(argv);
+	return 0;
+}
