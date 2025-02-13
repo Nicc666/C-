@@ -27,6 +27,8 @@ class PmergeMe
 		PmergeMe(const PmergeMe &other);
 		PmergeMe &operator=(const PmergeMe &other);
 		~PmergeMe(void);
+		bool inputerror(char **argv);
 		void printlist(void);
 		void algoritm(char **argv);
+		bool fillin(char **argv);
 };
