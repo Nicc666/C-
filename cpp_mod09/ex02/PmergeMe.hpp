@@ -17,18 +17,26 @@
 #include <vector>
 #include <cstdlib>
 #include <climits>
+#include <algorithm>
 
 class PmergeMe
 {
 	private:
 		std::vector<int> data;
+		std::vector<std::pair<int, int> > p;
+		std::vector<int> ret;
 	public:
 		PmergeMe(void);
 		PmergeMe(const PmergeMe &other);
 		PmergeMe &operator=(const PmergeMe &other);
 		~PmergeMe(void);
-		bool inputerror(char **argv);
-		void printlist(void);
+		static bool inputerror(char **argv);
+		void printlist(std::vector<int> &vec);
+		void printpair(void);
+		bool fillint(char **argv);
+		bool fillpair(void);
+		bool orderpair(void);
+		bool final(void);
+		bool vectorret(std::vector<int> &first, std::vector<int> &second);
 		void algoritm(char **argv);
-		bool fillin(char **argv);
 };

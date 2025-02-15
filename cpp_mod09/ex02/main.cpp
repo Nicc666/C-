@@ -16,7 +16,12 @@ int main(int argc, char **argv)
 {
 	if (argc < 3)
 	{
-		std::cout << "Error: provide a list of numbers" << std::endl;
+		std::cout << "Error: number of arguments" << std::endl;
+		return 1;
+	}
+	if (PmergeMe::inputerror(argv) == false)
+	{
+		std::cout << "Error: provide a correct list of numbers" << std::endl;
 		return 1;
 	}
 	PmergeMe pm;
