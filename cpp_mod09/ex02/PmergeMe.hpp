@@ -15,6 +15,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <deque>
 #include <cstdlib>
 #include <climits>
 #include <algorithm>
@@ -24,20 +25,28 @@ class PmergeMe
 {
 	private:
 		std::vector<int> data;
-		std::vector<std::pair<int, int> > p;
 		std::vector<int> ret;
+		std::deque<int> d;
+		std::deque<int> fin;
 	public:
 		PmergeMe(void);
 		PmergeMe(const PmergeMe &other);
 		PmergeMe &operator=(const PmergeMe &other);
 		~PmergeMe(void);
+
 		static bool inputerror(char **argv);
-		void printlist(std::vector<int> &vec);
-		void printpair(void);
-		bool fillint(char **argv);
-		void fillpair(void);
-		void orderpair(void);
-		void final(void);
-		void vectorret(std::vector<int> &first, std::vector<int> &second);
-		void algoritm(char **argv);
+
+		void printvector(std::vector<int> &vec);
+		bool fillvector(char **argv);
+		void fill_order_pair(std::vector<std::pair<int, int> > &p);
+		void algorithm(std::vector<std::pair<int, int> > &p);
+		void sortvector(void);
+
+		void printdeque(std::deque<int> &vec);
+		bool filldeque(char **argv);
+		void fill_order_pair_d(std::deque<std::pair<int, int> > &p);
+		void algorithm_d(std::deque<std::pair<int, int> > &p);
+		void sortdeque(void);
+
+		bool sort(char **argv);
 };

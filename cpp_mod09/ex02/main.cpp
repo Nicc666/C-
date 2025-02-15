@@ -25,6 +25,7 @@ int main(int argc, char **argv)
 		return 1;
 	}
 	PmergeMe pm;
-	pm.algoritm(argv);
+	if (!pm.sort(argv))
+		return 1;
 	return 0;
 }
