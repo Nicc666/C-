@@ -43,6 +43,8 @@ bool PmergeMe::inputerror(char **argv)
 		{
 			if ((isdigit(argv[i][j]) == false) && (argv[i][j] != '+') && (argv[i][j] != '-'))
 				return (false);
+			if ((argv[i][j] == '+' || argv[i][j] == '-') && j != 0)
+				return (false);
 		}
 	}
 	return (true);
@@ -52,7 +54,8 @@ void PmergeMe::printlist(std::vector<int> &vec)
 {
 	std::vector<int>::iterator it;
 	for (it = vec.begin(); it != vec.end(); it++)
-		std::cout << *it << std::endl;
+		std::cout << *it << " ";
+	std::cout << std::endl;
 	return;
 }
 
@@ -81,7 +84,7 @@ bool PmergeMe::fillint(char **argv)
 	return(true);
 }
 
-bool PmergeMe::fillpair(void)
+void PmergeMe::fillpair(void)
 {
 	p.reserve(data.size()/2);
 	std::vector<int>::iterator it;
@@ -92,12 +95,10 @@ bool PmergeMe::fillpair(void)
 		p.push_back(std::make_pair(*it, *(it + 1)));
 		it++;
 	}
-	return(true);
+	return;
 }
 
-
-
-bool PmergeMe::orderpair(void)
+void PmergeMe::orderpair(void)
 {
 	std::vector<std::pair<int, int> >::iterator it;
 	for(it=p.begin(); it!=p.end(); it++)
@@ -107,10 +108,10 @@ bool PmergeMe::orderpair(void)
 			std::swap(it->first, it->second);
 		}
 	}
-	return(true);
+	return;
 }
 
-bool PmergeMe::vectorret(std::vector<int> &first, std::vector<int> &second)
+void PmergeMe::vectorret(std::vector<int> &first, std::vector<int> &second)
 {
 	std::vector<int>::iterator it;
 	std::vector<int>::iterator it_r;
@@ -134,10 +135,10 @@ bool PmergeMe::vectorret(std::vector<int> &first, std::vector<int> &second)
 			}
 		}
 	}
-	return(true);
+	return;
 }
 
-bool PmergeMe::final(void)
+void PmergeMe::final(void)
 {
 	std::vector<int> first;
 	std::vector<int> second;
@@ -149,41 +150,33 @@ bool PmergeMe::final(void)
 	}
 	if (data.size() % 2 != 0)
 		first.push_back(data.back());
-	std::cout << "prima lista:" << std::endl; //test
-	this->printlist(first); //test
-	std::cout << "seconda lista:" << std::endl; //test
-	this->printlist(second); //test
 	std::sort(first.begin(), first.end());
-	std::cout << "prima lista ordinata:" << std::endl; //test
-	this->printlist(first); //test
 	this->vectorret(first, second);
-	return(true);
+	return;
 }
 
 void PmergeMe::algoritm(char **argv)
 {
 	if (!this->fillint(argv))
 		return;
+	clock_t start = clock();
+	std::cout << "Before: ";
+	this->printlist(data);
 	if (data.size() <= 3)
 	{
 		std::sort(data.begin(), data.end());
-		std::cout << "RISULTATO FINALE:" << std::endl; //test
-		this->printlist(data); //test
+		std::cout << "After:  ";
+		this->printlist(data);
 		return;
 	}
-	if (!this->fillpair())
-		return;
-	this->printlist(data); //test
-	std::cout << "COPPIE:" << std::endl; //test
-	this->printpair(); //test
-	if (!this->orderpair())
-		return;
-	std::cout << "COPPIE ordinate :" << std::endl; //test
-	this->printpair(); //test
-	if (!this->final())
-		return;
-	std::cout << "RISULTATO FINALE:" << std::endl; //test
+	this->fillpair();
+	this->orderpair();
+	this->final();
+	clock_t end = clock();
+	std::cout << "After:  ";
 	this->printlist(ret);
+	double elapsed = double(end - start) / CLOCKS_PER_SEC;
+    std::cout << "Time to process a range of " << data.size() << "elements: " << elapsed*1000000.0 << " us" << std::endl;
 	return;
 }
 

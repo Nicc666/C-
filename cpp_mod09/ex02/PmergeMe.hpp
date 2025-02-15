@@ -18,6 +18,7 @@
 #include <cstdlib>
 #include <climits>
 #include <algorithm>
+#include <ctime>
 
 class PmergeMe
 {
@@ -34,9 +35,9 @@ class PmergeMe
 		void printlist(std::vector<int> &vec);
 		void printpair(void);
 		bool fillint(char **argv);
-		bool fillpair(void);
-		bool orderpair(void);
-		bool final(void);
-		bool vectorret(std::vector<int> &first, std::vector<int> &second);
+		void fillpair(void);
+		void orderpair(void);
+		void final(void);
+		void vectorret(std::vector<int> &first, std::vector<int> &second);
 		void algoritm(char **argv);
 };
