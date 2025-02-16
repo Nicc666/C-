@@ -104,6 +104,93 @@ void PmergeMe::fill_order_pair(std::vector<std::pair<int, int> > &p)
 	return;
 }
 
+void PmergeMe::merge(std::vector<int> &v, int left, int mid, int right)
+{
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+    // Creazione di due array temporanei
+    int leftArr[n1], rightArr[n2];
+    // Copia i dati nei sotto-array
+    for (int i = 0; i < n1; i++)
+        leftArr[i] = v[left + i];
+    for (int j = 0; j < n2; j++)
+        rightArr[j] = v[mid + 1 + j];
+    // Merge dei sotto-array ordinati
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2)
+	{
+        if (leftArr[i] <= rightArr[j])
+		{
+            v[k] = leftArr[i];
+            i++;
+        }
+		else
+		{
+            v[k] = rightArr[j];
+            j++;
+        }
+        k++;
+    }
+    // Copia gli elementi rimanenti di leftArr[]
+    while (i < n1)
+	{
+        v[k] = leftArr[i];
+        i++;
+        k++;
+    }
+    // Copia gli elementi rimanenti di rightArr[]
+    while (j < n2)
+	{
+        v[k] = rightArr[j];
+        j++;
+        k++;
+    }
+	return;
+}
+
+// Funzione di Merge Sort
+void PmergeMe::mergesort(std::vector<int> &v, int left, int right)
+{
+    if (left < right)
+	{
+        int mid = left + (right - left) / 2;
+
+        // Ordina la prima e la seconda metà
+        mergesort(v, left, mid);
+        mergesort(v, mid + 1, right);
+
+        // Unisci le due metà ordinate
+        merge(v, left, mid, right);
+    }
+	return;
+}
+
+void PmergeMe::binaryinsertion(std::vector<int> &second)
+{
+	std::vector<int>::iterator it;
+	for (it=second.begin(); it!=second.end(); it++)
+	{
+		int low = 0;
+		int high = this->ret.size() - 1;
+		while (low <= high)
+		{
+			int mid = low + (high - low) / 2;
+			if (ret[mid] == *it)
+			{
+				low = mid;
+				//ret.insert(ret.begin() + mid, *it);
+				break;
+			}
+			else if (ret[mid] < *it)
+				low = mid + 1;
+			else
+				high = mid - 1;
+		}
+		ret.insert(ret.begin() + low, *it);
+	}
+	return;
+}
+
 void PmergeMe::algorithm(std::vector<std::pair<int, int> > &p)
 {
 	std::vector<int> first;
@@ -116,27 +203,12 @@ void PmergeMe::algorithm(std::vector<std::pair<int, int> > &p)
 	}
 	if (data.size() % 2 != 0)
 		first.push_back(data.back());
-	std::sort(first.begin(), first.end());
+	this->mergesort(first, 0, first.size() - 1);
 	std::vector<int>::iterator it;
 	std::vector<int>::iterator it_r;
 	for(it=first.begin(); it!=first.end(); it++)
 		ret.push_back(*it);
-	for(it=second.begin(); it!=second.end(); it++)
-	{
-		for(it_r=ret.begin(); it_r!=ret.end(); it_r++)
-		{
-			if ((it_r + 1) != ret.end() && *it <= *(it_r + 1))
-			{
-				ret.insert(it_r+1, *it);
-				break;
-			}
-			else if ((it_r + 1) == ret.end())
-			{
-				ret.push_back(*it);
-				break;
-			}
-		}
-	}
+	this->binaryinsertion(second);
 	return;
 }
 
@@ -212,6 +284,93 @@ void PmergeMe::fill_order_pair_d(std::deque<std::pair<int, int> > &p)
 	return;
 }
 
+void PmergeMe::merge_d(std::deque<int> &v, int left, int mid, int right)
+{
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+    // Creazione di due array temporanei
+    int leftArr[n1], rightArr[n2];
+    // Copia i dati nei sotto-array
+    for (int i = 0; i < n1; i++)
+        leftArr[i] = v[left + i];
+    for (int j = 0; j < n2; j++)
+        rightArr[j] = v[mid + 1 + j];
+    // Merge dei sotto-array ordinati
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2)
+	{
+        if (leftArr[i] <= rightArr[j])
+		{
+            v[k] = leftArr[i];
+            i++;
+        }
+		else
+		{
+            v[k] = rightArr[j];
+            j++;
+        }
+        k++;
+    }
+    // Copia gli elementi rimanenti di leftArr[]
+    while (i < n1)
+	{
+        v[k] = leftArr[i];
+        i++;
+        k++;
+    }
+    // Copia gli elementi rimanenti di rightArr[]
+    while (j < n2)
+	{
+        v[k] = rightArr[j];
+        j++;
+        k++;
+    }
+	return;
+}
+
+// Funzione di Merge Sort
+void PmergeMe::mergesort_d(std::deque<int> &v, int left, int right)
+{
+    if (left < right)
+	{
+        int mid = left + (right - left) / 2;
+
+        // Ordina la prima e la seconda metà
+        mergesort_d(v, left, mid);
+        mergesort_d(v, mid + 1, right);
+
+        // Unisci le due metà ordinate
+        merge_d(v, left, mid, right);
+    }
+	return;
+}
+
+void PmergeMe::binaryinsertion_d(std::deque<int> &second)
+{
+	std::deque<int>::iterator it;
+	for (it=second.begin(); it!=second.end(); it++)
+	{
+		int low = 0;
+		int high = this->fin.size() - 1;
+		while (low <= high)
+		{
+			int mid = low + (high - low) / 2;
+			if (ret[mid] == *it)
+			{
+				low = mid;
+				//ret.insert(ret.begin() + mid, *it);
+				break;
+			}
+			else if (ret[mid] < *it)
+				low = mid + 1;
+			else
+				high = mid - 1;
+		}
+		fin.insert(fin.begin() + low, *it);
+	}
+	return;
+}
+
 void PmergeMe::algorithm_d(std::deque<std::pair<int, int> > &p)
 {
 	std::deque<int> first;
@@ -229,22 +388,7 @@ void PmergeMe::algorithm_d(std::deque<std::pair<int, int> > &p)
 	std::deque<int>::iterator it_r;
 	for(it=first.begin(); it!=first.end(); it++)
 		fin.push_back(*it);
-	for(it=second.begin(); it!=second.end(); it++)
-	{
-		for(it_r = fin.begin(); it_r != fin.end(); it_r++)
-		{
-			if ((it_r + 1) != fin.end() && *it <= *(it_r + 1))
-			{
-				fin.insert(it_r+1, *it);
-				break;
-			}
-			else if ((it_r + 1) == fin.end())
-			{
-				fin.push_back(*it);
-				break;
-			}
-		}
-	}
+	this->binaryinsertion_d(second);
 	return;
 }
 
