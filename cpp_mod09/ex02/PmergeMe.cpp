@@ -106,62 +106,53 @@ void PmergeMe::fill_order_pair(std::vector<std::pair<int, int> > &p)
 
 void PmergeMe::merge(std::vector<int> &v, int left, int mid, int right)
 {
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
-    // Creazione di due array temporanei
-    int leftArr[n1], rightArr[n2];
-    // Copia i dati nei sotto-array
-    for (int i = 0; i < n1; i++)
-        leftArr[i] = v[left + i];
-    for (int j = 0; j < n2; j++)
-        rightArr[j] = v[mid + 1 + j];
-    // Merge dei sotto-array ordinati
-    int i = 0, j = 0, k = left;
-    while (i < n1 && j < n2)
+	int n1 = mid - left + 1;
+	int n2 = right - mid;
+	int leftArr[n1];
+	int rightArr[n2];
+	for (int i = 0; i < n1; i++)
+		leftArr[i] = v[left + i];
+	for (int j = 0; j < n2; j++)
+		rightArr[j] = v[mid + 1 + j];
+	int i = 0, j = 0, k = left;
+	while (i < n1 && j < n2)
 	{
-        if (leftArr[i] <= rightArr[j])
+		if (leftArr[i] <= rightArr[j])
 		{
-            v[k] = leftArr[i];
-            i++;
-        }
+			v[k] = leftArr[i];
+			i++;
+		}
 		else
 		{
-            v[k] = rightArr[j];
-            j++;
-        }
-        k++;
-    }
-    // Copia gli elementi rimanenti di leftArr[]
-    while (i < n1)
+			v[k] = rightArr[j];
+			j++;
+		}
+		k++;
+	}
+	while (i < n1)
 	{
-        v[k] = leftArr[i];
-        i++;
-        k++;
-    }
-    // Copia gli elementi rimanenti di rightArr[]
-    while (j < n2)
+		v[k] = leftArr[i];
+		i++;
+		k++;
+	}
+	while (j < n2)
 	{
-        v[k] = rightArr[j];
-        j++;
-        k++;
-    }
+		v[k] = rightArr[j];
+		j++;
+		k++;
+	}
 	return;
 }
 
-// Funzione di Merge Sort
 void PmergeMe::mergesort(std::vector<int> &v, int left, int right)
 {
-    if (left < right)
+	if (left < right)
 	{
-        int mid = left + (right - left) / 2;
-
-        // Ordina la prima e la seconda metà
-        mergesort(v, left, mid);
-        mergesort(v, mid + 1, right);
-
-        // Unisci le due metà ordinate
-        merge(v, left, mid, right);
-    }
+		int mid = left + (right - left) / 2;
+		mergesort(v, left, mid);
+		mergesort(v, mid + 1, right);
+		merge(v, left, mid, right);
+	}
 	return;
 }
 
@@ -170,23 +161,22 @@ void PmergeMe::binaryinsertion(std::vector<int> &second)
 	std::vector<int>::iterator it;
 	for (it=second.begin(); it!=second.end(); it++)
 	{
-		int low = 0;
-		int high = this->ret.size() - 1;
-		while (low <= high)
+		int i = 0;
+		int e = this->ret.size() - 1;
+		while (i <= e)
 		{
-			int mid = low + (high - low) / 2;
-			if (ret[mid] == *it)
+			int m = i + (e - i) / 2;
+			if (ret[m] == *it)
 			{
-				low = mid;
-				//ret.insert(ret.begin() + mid, *it);
+				i = m;
 				break;
 			}
-			else if (ret[mid] < *it)
-				low = mid + 1;
+			else if (ret[m] < *it)
+				i = m + 1;
 			else
-				high = mid - 1;
+				e = m - 1;
 		}
-		ret.insert(ret.begin() + low, *it);
+		ret.insert(ret.begin() + i, *it);
 	}
 	return;
 }
@@ -224,7 +214,7 @@ void PmergeMe::sortvector(void)
 		this->printvector(data);
 		clock_t end = clock();
 		double elapsed = double(end - start) / CLOCKS_PER_SEC;
-    	std::cout << "Time to process a range of " << data.size() << " elements with std::vector: " << elapsed*1000000.0 << " us" << std::endl;
+		std::cout << "Time to process a range of " << data.size() << " elements with std::vector: " << elapsed*1000000.0 << " us" << std::endl;
 		return;
 	}
 	std::vector<std::pair<int, int> > p;
@@ -234,7 +224,7 @@ void PmergeMe::sortvector(void)
 	std::cout << "After:  ";
 	this->printvector(ret);
 	double elapsed = double(end - start) / CLOCKS_PER_SEC;
-    std::cout << "Time to process a range of " << data.size() << " elements with std::vector: " << elapsed*1000000.0 << " us" << std::endl;
+	std::cout << "Time to process a range of " << data.size() << " elements with std::vector: " << elapsed*1000000.0 << " us" << std::endl;
 	return;
 }
 
@@ -286,62 +276,53 @@ void PmergeMe::fill_order_pair_d(std::deque<std::pair<int, int> > &p)
 
 void PmergeMe::merge_d(std::deque<int> &v, int left, int mid, int right)
 {
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
-    // Creazione di due array temporanei
-    int leftArr[n1], rightArr[n2];
-    // Copia i dati nei sotto-array
-    for (int i = 0; i < n1; i++)
-        leftArr[i] = v[left + i];
-    for (int j = 0; j < n2; j++)
-        rightArr[j] = v[mid + 1 + j];
-    // Merge dei sotto-array ordinati
-    int i = 0, j = 0, k = left;
-    while (i < n1 && j < n2)
+	int n1 = mid - left + 1;
+	int n2 = right - mid;
+	int leftArr[n1];
+	int rightArr[n2];
+	for (int i = 0; i < n1; i++)
+		leftArr[i] = v[left + i];
+	for (int j = 0; j < n2; j++)
+		rightArr[j] = v[mid + 1 + j];
+	int i = 0, j = 0, k = left;
+	while (i < n1 && j < n2)
 	{
-        if (leftArr[i] <= rightArr[j])
+		if (leftArr[i] <= rightArr[j])
 		{
-            v[k] = leftArr[i];
-            i++;
-        }
+			v[k] = leftArr[i];
+			i++;
+		}
 		else
 		{
-            v[k] = rightArr[j];
-            j++;
-        }
-        k++;
-    }
-    // Copia gli elementi rimanenti di leftArr[]
-    while (i < n1)
+			v[k] = rightArr[j];
+			j++;
+		}
+		k++;
+	}
+	while (i < n1)
 	{
-        v[k] = leftArr[i];
-        i++;
-        k++;
-    }
-    // Copia gli elementi rimanenti di rightArr[]
-    while (j < n2)
+		v[k] = leftArr[i];
+		i++;
+		k++;
+	}
+	while (j < n2)
 	{
-        v[k] = rightArr[j];
-        j++;
-        k++;
-    }
+		v[k] = rightArr[j];
+		j++;
+		k++;
+	}
 	return;
 }
 
-// Funzione di Merge Sort
 void PmergeMe::mergesort_d(std::deque<int> &v, int left, int right)
 {
-    if (left < right)
+	if (left < right)
 	{
-        int mid = left + (right - left) / 2;
-
-        // Ordina la prima e la seconda metà
-        mergesort_d(v, left, mid);
-        mergesort_d(v, mid + 1, right);
-
-        // Unisci le due metà ordinate
-        merge_d(v, left, mid, right);
-    }
+		int mid = left + (right - left) / 2;
+		mergesort_d(v, left, mid);
+		mergesort_d(v, mid + 1, right);
+		merge_d(v, left, mid, right);
+	}
 	return;
 }
 
@@ -350,23 +331,22 @@ void PmergeMe::binaryinsertion_d(std::deque<int> &second)
 	std::deque<int>::iterator it;
 	for (it=second.begin(); it!=second.end(); it++)
 	{
-		int low = 0;
-		int high = this->fin.size() - 1;
-		while (low <= high)
+		int i = 0;
+		int e = this->fin.size() - 1;
+		while (i <= e)
 		{
-			int mid = low + (high - low) / 2;
-			if (ret[mid] == *it)
+			int m = i + (e - i) / 2;
+			if (fin[m] == *it)
 			{
-				low = mid;
-				//ret.insert(ret.begin() + mid, *it);
+				i = m;
 				break;
 			}
-			else if (ret[mid] < *it)
-				low = mid + 1;
+			else if (fin[m] < *it)
+				i = m + 1;
 			else
-				high = mid - 1;
+				e = m - 1;
 		}
-		fin.insert(fin.begin() + low, *it);
+		fin.insert(fin.begin() + i, *it);
 	}
 	return;
 }
@@ -404,7 +384,7 @@ void PmergeMe::sortdeque(void)
 		this->printdeque(d);
 		clock_t end = clock();
 		double elapsed = double(end - start) / CLOCKS_PER_SEC;
-    	std::cout << "Time to process a range of " << d.size() << " elements with std::deque: " << elapsed*1000000.0 << " us" << std::endl;
+		std::cout << "Time to process a range of " << d.size() << " elements with std::deque: " << elapsed*1000000.0 << " us" << std::endl;
 		return;
 	}
 	std::deque<std::pair<int, int> > p;
@@ -414,7 +394,7 @@ void PmergeMe::sortdeque(void)
 	std::cout << "After:  ";
 	this->printdeque(fin);
 	double elapsed = double(end - start) / CLOCKS_PER_SEC;
-    std::cout << "Time to process a range of " << d.size() << " elements with std::deque: " << elapsed*1000000.0 << " us" << std::endl;
+	std::cout << "Time to process a range of " << d.size() << " elements with std::deque: " << elapsed*1000000.0 << " us" << std::endl;
 	return;
 }
 
@@ -430,38 +410,3 @@ bool PmergeMe::sort(char **argv)
 	this->sortdeque();
 	return(true);
 }
-
-/*
-void PmergeMe::printpair(void)
-{
-	std::vector<std::pair<int, int> >::iterator it;
-	it = p.begin();
-	for (; it != p.end(); it++)
-		std::cout << "first " << it->first << " second " << it->second << std::endl;
-	return;
-}
-
-bool PmergeMe::ordercomparison(std::vector<int> &vec)
-{
-	bool ordered = false;
-	bool flag = false;
-	std::vector<int>::iterator it;
-	while(ordered == false)
-	{
-		flag = false;
-		for (it=vec.begin(); it != vec.end(); it++)
-		{
-			if ((it + 1) != vec.end() && (*it) > *(it + 1))
-			{
-				std::swap(*it, *(it + 1));
-				flag = true;
-			}
-		}
-		if (flag == true)
-			ordered = false;
-		else
-			ordered = true;
-	}
-	return(true);
-}
-*/

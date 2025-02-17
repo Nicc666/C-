@@ -24,4 +24,7 @@ fclean: clean
 
 re: fclean all
 
+test: all
+	./$(NAME) $(shell shuf -i 1-1000 -n 3000 | tr "\n" " ")
+
 .PHONY: all clean fclean re
