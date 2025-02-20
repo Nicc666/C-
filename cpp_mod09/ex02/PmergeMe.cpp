@@ -93,7 +93,8 @@ void PmergeMe::fill_order_pair(std::vector<std::pair<int, int> > &p)
 		if ((it+1) == data.end())
 			break;
 		p.push_back(std::make_pair(*it, *(it + 1)));
-		it++;
+		//it++;
+		it = it + 1;
 	}
 	std::vector<std::pair<int, int> >::iterator it_p;
 	for(it_p = p.begin(); it_p != p.end(); it_p++)
@@ -263,7 +264,8 @@ void PmergeMe::fill_order_pair_d(std::deque<std::pair<int, int> > &p)
 		if ((it+1) == d.end())
 			break;
 		p.push_back(std::make_pair(*it, *(it + 1)));
-		it++;
+		//it++;
+		it = it + 1;
 	}
 	std::deque<std::pair<int, int> >::iterator it_p;
 	for(it_p = p.begin(); it_p != p.end(); it_p++)
