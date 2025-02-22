@@ -2,19 +2,17 @@
 #include <string>
 #include <iostream>
 
-class Warlock
+class ASpell
 {
     private:
         std::string name;
-        std::string title;
-        Warlock();
-        Warlock(const Warlock &other);
-        Warlock &operator=(const Warlock &other);
+        std::string effects;
     public:
-        Warlock(const std::string &name, const std::string &title);
-        ~Warlock();
+        ASpell();
+        ASpell(const ASpell &other);
+        ASpell &operator=(const ASpell &other);
+        virtual ~ASpell() = 0;
         const std::string &getName(void) const;
-        const std::string &getTitle(void) const;
-        void setTitle(const std::string &title);
-        void introduce(void) const;
+        const std::string &getEffects(void) const;
+        virtual ASpell *clone(void) = 0;
 };
