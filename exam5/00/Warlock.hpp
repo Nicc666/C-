@@ -11,10 +11,10 @@ class Warlock
         Warlock(const Warlock &other);
         Warlock &operator=(const Warlock &other);
     public:
-        std::string &getName(void);
-        std::string &getTitle(void);
-        void setTitle(const std::string &title);
         Warlock(const std::string &name, const std::string &title);
         ~Warlock();
+        const std::string &getName(void) const;
+        const std::string &getTitle(void) const;
+        void setTitle(const std::string &title);
+        void introduce(void) const;
 };
-
