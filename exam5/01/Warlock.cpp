@@ -29,6 +29,12 @@ Warlock::Warlock(const std::string &name, const std::string &title)
 Warlock::~Warlock()
 {
     std::cout << this->name << ": My job here is done!" << std::endl;
+    std::vector<ASpell *>::iterator it = spell.begin();
+    for(; it != spell.end(); it++)
+    {
+        delete *it;
+    }
+    spell.clear();
 }
 
 const std::string &Warlock::getName(void) const
