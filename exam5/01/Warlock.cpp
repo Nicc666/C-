@@ -1,25 +1,6 @@
 
 #include "Warlock.hpp"
 
-/*
-Warlock::Warlock()
-{
-}
-
-Warlock::Warlock(const Warlock &other)
-{
-    *this = other;
-}
-
-Warlock &Warlock::operator=(const Warlock &other)
-{
-    if (this == &other)
-        return (*this);
-    name = other.name;
-    title = other.title;
-    return (*this);
-}*/
-
 Warlock::Warlock(const std::string &name, const std::string &title)
 {
     this->name = name;
@@ -36,7 +17,6 @@ Warlock::~Warlock()
         delete *it;
         it = spell.erase(it);
     }
-    //spell.clear();
 }
 
 const std::string &Warlock::getName(void) const

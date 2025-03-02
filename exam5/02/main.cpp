@@ -4,6 +4,9 @@
 #include "ATarget.hpp"
 #include "Dummy.hpp"
 #include "Fwoosh.hpp"
+#include "Fireball.hpp"
+#include "Polymorph.hpp"
+#include "BrickWall.hpp"
 
 int main()
 {

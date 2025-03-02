@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include "ASpell.hpp"
+#include "SpellBook.hpp"
 #include "ATarget.hpp"
 
 class Warlock
@@ -12,7 +12,7 @@ class Warlock
     private:
         std::string name;
         std::string title;
-        std::vector<ASpell *> spell;
+        SpellBook book;
         Warlock();
         Warlock(const Warlock &other);
         Warlock &operator=(const Warlock &other);
