@@ -5,7 +5,7 @@ BrickWall::BrickWall() : ATarget("Inconspicuous Red-brick Wall")
 {
 }
 
-BrickWall::BrickWall(std::string t) : ATarget(t)
+BrickWall::BrickWall(const std::string &t) : ATarget(t)
 {
 }
 
@@ -28,6 +28,5 @@ BrickWall::~BrickWall()
 
 ATarget *BrickWall::clone(void) const
 {
-	BrickWall *d = new BrickWall();
-	return (d);
+	return (new BrickWall(*this));
 }

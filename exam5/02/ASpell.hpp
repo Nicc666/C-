@@ -13,7 +13,7 @@ class ASpell
         std::string name;
         std::string effects;
     public:
-        ASpell();
+        //ASpell();
         ASpell(const std::string &n, const std::string &e);
         ASpell(const ASpell &other);
         ASpell &operator=(const ASpell &other);

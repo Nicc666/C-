@@ -1,58 +1,39 @@
-
 #include "TargetGenerator.hpp"
 
-TargetGenerator::TargetGenerator()
-{
-}
+TargetGenerator::TargetGenerator() {}
 
-TargetGenerator::~TargetGenerator()
+TargetGenerator::~TargetGenerator() 
 {
-	std::vector<ATarget *>::iterator it = list.begin();
-	for(;it !=list.end();)
-	{
-		delete *it;
-		it = list.erase(it);
-	}
-}
-
-void TargetGenerator::learnTargetType(ATarget *target)
-{
-	if (target == NULL)
-		return;
-	for (std::vector<ATarget*>::iterator it = list.begin(); it != list.end(); it++)
+    std::map<std::string, ATarget *>::iterator it = book.begin();
+    while (it != book.end())
     {
-        if ((*it)->getType() == target->getType()) 
-        {
-            return;//already learned
-        }
+        delete it->second;
+        ++it;
     }
-	list.push_back(target->clone());
+    book.clear();
 }
 
-void TargetGenerator::forgetTargetType(std::string const &target)
+void TargetGenerator::learnTargetType(ATarget * spellPtr)
 {
-	std::vector<ATarget *>::iterator it = list.begin();
-	for(;it !=list.end();)
-	{
-		if ((*it)->getType() == target)
-		{
-			delete *it;
-			it = list.erase(it);
-		}
-		else
-			it++;
-	}
+    if (spellPtr)
+        book.insert(std::pair<std::string, ATarget *>(spellPtr->getType(), spellPtr->clone()));
 }
 
-ATarget* TargetGenerator::createTarget(std::string const &target)
+void TargetGenerator::forgetTargetType(std::string const & type)
 {
-	std::vector<ATarget *>::iterator it = list.begin();
-	for(;it !=list.end(); it++)
-	{
-		if ((*it)->getType() == target)
-		{
-			return ((*it));
-		}
-	}
-	return new BrickWall(target);
+    if (book.find(type) != book.end())
+        delete book[type];
+    book.erase(type);
+}
+
+ATarget * TargetGenerator::createTarget(std::string const & type)
+{
+    if (book.find(type) != book.end())
+        return book[type];
+    return new BrickWall(type); // This funtion, as the class name implies (Target Generator),
+                                // is to CREATE A TARGET OF THE SPECIFIED TYPE. Which means it
+                                // may or may NOT CORRESPOND with an already existing type, if
+                                // it doesn't, the specified one should be created and returned.
+                                // For this reason we need a name constructor for either the Dummy
+                                // or the BrickWall class that will use the ATarget name constructor.
 }

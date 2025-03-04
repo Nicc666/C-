@@ -12,7 +12,7 @@ class ATarget
     protected:
         std::string type;
     public:
-        ATarget();
+        //ATarget();
         ATarget(const std::string &t);
         ATarget(const ATarget &other);
         ATarget &operator=(const ATarget &other);

@@ -23,7 +23,7 @@ Fireball::~Fireball()
 {
 }
 
-ASpell *Fireball::clone(void)
+ASpell *Fireball::clone(void) const
 {
 	ASpell *f = new Fireball();
 	return (f);

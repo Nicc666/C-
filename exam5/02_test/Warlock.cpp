@@ -1,54 +1,48 @@
-
 #include "Warlock.hpp"
 
-Warlock::Warlock(const std::string &name, const std::string &title)
+Warlock::Warlock(std::string const & name_, std::string const & title_) : name(name_), title(title_)
 {
-	this->name = name;
-	this->title = title;
-	std::cout << this->name << ": This looks like another boring day." << std::endl;
+    std::cout << name << ": This looks like another boring day." << std::endl;
 }
 
 Warlock::~Warlock()
 {
-	std::cout << this->name << ": My job here is done!" << std::endl;
+    std::cout << name << ": My job here is done!" << std::endl;
 }
 
-const std::string &Warlock::getName(void) const
+std::string const & Warlock::getName() const
 {
-	return(this->name);
+    return name;
 }
 
-const std::string &Warlock::getTitle(void) const
+std::string const & Warlock::getTitle() const
 {
-	return(this->title);
+    return title;
 }
 
-void Warlock::setTitle(const std::string &title)
+void Warlock::setTitle(std::string const & title_)
 {
-	this->title = title;
+    title = title_;
 }
 
-void Warlock::introduce(void) const
+void Warlock::introduce() const
 {
-	std::cout << this->name << ": I am " << name << ", " << title << "!" << std::endl;
+    std::cout << name << ": I am " << name << ", " << title << "!\n";
 }
 
-void Warlock::learnSpell(ASpell *s)
+void Warlock::learnSpell(ASpell * spellPtr)
 {
-	this->book.learnSpell(s);
+    book.learnSpell(spellPtr);
 }
 
-void Warlock::forgetSpell(std::string spell_name)
+void Warlock::forgetSpell(std::string spell)
 {
-	this->book.forgetSpell(spell_name);
+    book.forgetSpell(spell);
 }
 
-void Warlock::launchSpell(std::string spell_name, const ATarget &t)
+void Warlock::launchSpell(std::string spell, ATarget const & target)
 {
-	ASpell *spell = this->book.createSpell(spell_name);
-	if (spell != NULL)
-	{
-		spell->launch(t);
-		return;
-	}
+    // it not possible to check for NULL on a const &, so target must EXIST
+    if (book.createSpell(spell))
+        book.createSpell(spell)->launch(target);
 }

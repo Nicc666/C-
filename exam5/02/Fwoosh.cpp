@@ -25,6 +25,5 @@ Fwoosh::~Fwoosh()
 
 ASpell *Fwoosh::clone(void) const
 {
-	Fwoosh *f = new Fwoosh();
-	return (f);
+	return (new Fwoosh(*this));
 }

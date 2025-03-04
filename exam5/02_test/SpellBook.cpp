@@ -1,58 +1,37 @@
-
 #include "SpellBook.hpp"
 
-SpellBook::SpellBook()
-{
-}
+SpellBook::SpellBook() {}
 
-SpellBook::~SpellBook()
+SpellBook::~SpellBook() 
 {
-	std::vector<ASpell *>::iterator it = list.begin();
-	for (;it != list.end(); )
-	{
-		delete (*it);
-		it = list.erase(it);
-	}
-}
-
-void SpellBook::learnSpell(ASpell *spell)
-{
-	if (spell == NULL)
-		return;
-	for (std::vector<ASpell*>::iterator it = list.begin(); it != list.end(); it++)
+    std::map<std::string, ASpell *>::iterator it = book.begin();
+    while (it != book.end())
     {
-        if ((*it)->getName() == spell->getName()) 
-        {
-            return;//already learned
-        }
+        delete it->second;
+        ++it;
     }
-	list.push_back(spell->clone());
+    book.clear();
 }
 
-void SpellBook::forgetSpell(std::string const &spell)
+void SpellBook::learnSpell(ASpell * spellPtr)
 {
-	std::vector<ASpell *>::iterator it = list.begin();
-	for (;it != list.end(); )
-	{
-		if ((*it)->getName() == spell)
-		{
-			delete (*it);
-			it = list.erase(it);
-		}
-		else
-			it++;
-	}
+    if (spellPtr)
+        book.insert(std::pair<std::string, ASpell *>(spellPtr->getName(), spellPtr->clone()));
+
 }
 
-ASpell* SpellBook::createSpell(std::string const &spell)
+void SpellBook::forgetSpell(std::string const & spell)
 {
-	std::vector<ASpell *>::iterator it = list.begin();
-	for (;it != list.end(); it++)
-	{
-		if ((*it)->getName() == spell)
-		{
-			return((*it));
-		}
-	}
-	return (NULL);
+    if (book.find(spell) != book.end())
+        delete book[spell];
+    book.erase(spell);
+}
+
+ASpell * SpellBook::createSpell(std::string const & spell)
+{
+    if (book.find(spell) != book.end())
+        return book[spell];
+    return NULL;  // This passes becasue this function is to receive
+                  // a STRING CORRESPONDING TO THE NAME OF A SPELL, create it, and return it.
+                  // Which means we can always assume the spell would already exist.
 }

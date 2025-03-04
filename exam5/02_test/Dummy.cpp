@@ -22,7 +22,7 @@ Dummy::~Dummy()
 {
 }
 
-ATarget *Dummy::clone(void)
+ATarget *Dummy::clone(void) const
 {
 	ATarget *d = new Dummy();
 	return (d);

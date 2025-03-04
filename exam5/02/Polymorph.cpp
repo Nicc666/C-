@@ -25,6 +25,5 @@ Polymorph::~Polymorph()
 
 ASpell *Polymorph::clone(void) const
 {
-	Polymorph *f = new Polymorph();
-	return (f);
+	return (new Polymorph(*this));
 }

@@ -13,7 +13,7 @@ class Polymorph : public ASpell
         Polymorph(const Polymorph &other);
         Polymorph &operator=(const Polymorph &other);
         virtual ~Polymorph();
-        virtual ASpell *clone(void);
+        virtual ASpell *clone(void) const;
 };
 
 #endif

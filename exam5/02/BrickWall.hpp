@@ -10,7 +10,7 @@ class BrickWall : public ATarget
 {
     public:
         BrickWall();
-        BrickWall(std::string t);
+        BrickWall(const std::string &t);
         BrickWall(const BrickWall &other);
         BrickWall &operator=(const BrickWall &other);
         virtual ~BrickWall();

@@ -2,9 +2,10 @@
 #include "ATarget.hpp"
 #include "ASpell.hpp"
 
+/*
 ATarget::ATarget()
 {
-}
+}*/
 
 ATarget::ATarget(const ATarget &other)
 {

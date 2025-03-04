@@ -25,6 +25,5 @@ Fireball::~Fireball()
 
 ASpell *Fireball::clone(void) const
 {
-	Fireball *f = new Fireball();
-	return (f);
+	return (new Fireball(*this));
 }
