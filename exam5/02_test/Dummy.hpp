@@ -13,7 +13,7 @@ class Dummy : public ATarget
         Dummy(const Dummy &other);
         Dummy &operator=(const Dummy &other);
         virtual ~Dummy();
-        virtual ATarget *clone(void) const;
+        virtual ATarget *clone(void);
 };
 
 #endif

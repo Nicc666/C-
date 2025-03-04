@@ -20,7 +20,7 @@ class ASpell
         virtual ~ASpell() = 0;
         const std::string &getName(void) const;
         const std::string &getEffects(void) const;
-        virtual ASpell *clone(void) = 0;
+        virtual ASpell *clone(void) const = 0;
         void launch(const ATarget &t) const;
 };
 

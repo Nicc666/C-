@@ -13,7 +13,7 @@ class Fwoosh : public ASpell
         Fwoosh(const Fwoosh &other);
         Fwoosh &operator=(const Fwoosh &other);
         virtual ~Fwoosh();
-        virtual ASpell *clone(void) const;
+        virtual ASpell *clone(void);
 };
 
 #endif

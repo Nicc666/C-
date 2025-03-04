@@ -23,8 +23,8 @@ Polymorph::~Polymorph()
 {
 }
 
-ASpell *Polymorph::clone(void) const
+ASpell *Polymorph::clone(void)
 {
-	Polymorph *f = new Polymorph();
+	ASpell *f = new Polymorph();
 	return (f);
 }

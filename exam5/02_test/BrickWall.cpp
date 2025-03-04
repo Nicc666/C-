@@ -28,6 +28,5 @@ BrickWall::~BrickWall()
 
 ATarget *BrickWall::clone(void) const
 {
-	BrickWall *d = new BrickWall();
-	return (d);
+	return (new BrickWall());
 }

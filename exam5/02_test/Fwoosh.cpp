@@ -23,8 +23,8 @@ Fwoosh::~Fwoosh()
 {
 }
 
-ASpell *Fwoosh::clone(void) const
+ASpell *Fwoosh::clone(void)
 {
-	Fwoosh *f = new Fwoosh();
+	ASpell *f = new Fwoosh();
 	return (f);
 }
