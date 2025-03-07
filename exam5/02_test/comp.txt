@@ -1,3 +1,0 @@
-
-
-c++ -Wall -Wextra -Werror -std=c++98 main.cpp ASpell.cpp ATarget.cpp Dummy.cpp Fwoosh.cpp Warlock.cpp Fireball.cpp Polymorph.cpp SpellBook.cpp BrickWall.cpp TargetGenerator.cpp
