@@ -7,6 +7,7 @@ Warlock::Warlock() : name(""), title("")
 
 Warlock::Warlock(const Warlock &other)
 {
+    std::cout << name << ": This looks like another boring day." << std::endl;
     *this = other;
 }
 
@@ -27,12 +28,12 @@ Warlock::~Warlock()
     std::cout << name << ": My job here is done!" << std::endl;
 }
 
-const std::string Warlock::getName(void) const
+const std::string &Warlock::getName(void) const
 {
     return(this->name);
 }
 
-const std::string Warlock::getTitle(void) const
+const std::string &Warlock::getTitle(void) const
 {
     return(this->title);
 }
