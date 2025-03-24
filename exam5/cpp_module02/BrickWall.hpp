@@ -4,11 +4,11 @@
 #include <iostream>
 #include "ATarget.hpp"
 
-class Dummy : public ATarget
+class BrickWall : public ATarget
 {
     public:
-		Dummy();
-		Dummy(const Dummy &other);
+		BrickWall();
+		BrickWall(const BrickWall &other);
 		virtual ATarget *clone(void) const;
-		virtual ~Dummy();
+		virtual ~BrickWall();
 };

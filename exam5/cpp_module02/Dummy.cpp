@@ -9,6 +9,10 @@ Dummy::Dummy(const Dummy &other) : ATarget(other)
 {
 }
 
+Dummy::Dummy(const std::string &type) : ATarget(type)
+{
+}
+
 Dummy::~Dummy()
 {
 }

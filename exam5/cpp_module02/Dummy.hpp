@@ -9,6 +9,7 @@ class Dummy : public ATarget
     public:
 		Dummy();
 		Dummy(const Dummy &other);
+		Dummy(const std::string &type);
 		virtual ATarget *clone(void) const;
 		virtual ~Dummy();
 };

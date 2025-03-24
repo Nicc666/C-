@@ -4,11 +4,11 @@
 #include <iostream>
 #include "ASpell.hpp"
 
-class Fwoosh : public ASpell
+class Polymorph : public ASpell
 {
     public:
-		Fwoosh();
-		Fwoosh(const Fwoosh &other);
+		Polymorph();
+		Polymorph(const Polymorph &other);
         virtual ASpell *clone(void) const;
-        virtual ~Fwoosh();
+        virtual ~Polymorph();
 };

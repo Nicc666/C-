@@ -4,11 +4,11 @@
 #include <iostream>
 #include "ASpell.hpp"
 
-class Fwoosh : public ASpell
+class Fireball : public ASpell
 {
     public:
-		Fwoosh();
-		Fwoosh(const Fwoosh &other);
+		Fireball();
+		Fireball(const Fireball &other);
         virtual ASpell *clone(void) const;
-        virtual ~Fwoosh();
+        virtual ~Fireball();
 };

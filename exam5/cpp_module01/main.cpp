@@ -20,4 +20,4 @@ int main()
   richard.launchSpell("Fwoosh", bob);
 }
 
-// clang++ -Wall -Wextra -Werror main.cpp Warlock.cpp ASpell.cpp ATarget.cpp Dummy.cpp Fwoosh.cpp
+// c++ -Wall -Wextra -Werror main.cpp Warlock.cpp ASpell.cpp ATarget.cpp Dummy.cpp Fwoosh.cpp

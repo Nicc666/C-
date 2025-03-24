@@ -6,12 +6,13 @@ ATarget::ATarget() : type("no_type")
 {
 }
 
-ATarget::ATarget(const std::string &t) : type(t)
-{
-}
 ATarget::ATarget(const ATarget &other)
 {
     *this = other;
+}
+
+ATarget::ATarget(const std::string &t) : type(t)
+{
 }
 
 ATarget &ATarget::operator=(const ATarget &other)
